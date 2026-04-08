@@ -86,19 +86,19 @@
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src ="{{ asset('Imagenes/primero.png') }}" class="d-block w-100"  alt="..." style = "max-height: 600px;" >
+      <img src ="{{ asset('Imagenes/1.jpeg') }}" class="d-block w-100"  alt="..." >
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src ="{{ asset('Imagenes/2.png') }}" class="d-block w-100" alt="...">
+      <img src ="{{ asset('Imagenes/2.jpeg') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src ="{{ asset('Imagenes/3.png') }}" class="d-block w-100" alt="...">
+      <img src ="{{ asset('Imagenes/3.jpeg') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src ="{{ asset('Imagenes/4.png') }}" class="d-block w-100" alt="...">
+      <img src ="{{ asset('Imagenes/4.jpeg') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src ="{{ asset('Imagenes/5.png') }}" class="d-block w-100" alt="...">
+      <img src ="{{ asset('Imagenes/5.jpeg') }}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -110,11 +110,43 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<!-- CATEGORIAS -->
+ <div class= "container">
+  <div class= "row row-cols-1 row-cols-md-3 g-4">
+    <div class= "col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        </div>
+      </div> 
+    </div>
+
+    <div class= "col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        </div>
+      </div> 
+    </div>
+
+    <div class= "col">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        </div>
+      </div> 
+    </div>
+
+
+  </div>
+ </div>
+
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-    
 
     </body>
 
