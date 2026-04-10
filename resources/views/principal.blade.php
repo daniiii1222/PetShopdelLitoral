@@ -55,16 +55,16 @@
             <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
             
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Comercializacion</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Category 1</a></li>
-                <li><a class="dropdown-item" href="#">Category 2</a></li>
+                <li><a class="dropdown-item" href="#">Alimento</a></li>
+                <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                <li><a class="dropdown-item" href="#">Ropa</a></li>
               </ul>
             </li>
-
-            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Page</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Quienes Somos</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Contacto</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Terminos y Usos</a></li>
           </ul>
 
           
@@ -123,28 +123,26 @@
     <div class= "container">
       <div class= "row row-cols-1 row-cols-md-3 g-4">
         <div class= "col">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-            </div>
-          </div> 
-        </div>
-
-        <div class= "col">
           <div class="category-card p-3">
-            <img src="{{ asset('Imagenes/LogoPetShop.png') }}" width="200" height="100">
-            <h5 class="category-title">Dog</h5>
-            <p class="category-count">6 items</p>
+            <img src="{{ asset('Imagenes/1.png') }}" >
+            <h5 class="category-title">ALIMENTO</h5>
+           <!-- <p class="category-count">6 items</p> -->
           </div>
         </div>
 
         <div class= "col">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-            </div>
+          <div class="category-card p-3">
+            <img src="{{ asset('Imagenes/2.png') }}" >
+            <h5 class="category-title">ACCESORIOS</h5>
+            <!-- <p class="category-count">6 items</p> -->
+          </div>
+        </div>
+
+        <div class= "col">
+          <div class="category-card p-3">
+            <img src="{{ asset('Imagenes/3.png') }}" >
+            <h5 class="category-title">ROPA</h5>
+            <!-- <p class="category-count">6 items</p> -->
           </div> 
         </div>
 
@@ -152,8 +150,45 @@
       </div>
     </div>
     <!--FOOTER-->
-    <footer>
+    <footer class="mi-footer mt-5">
+      <div class="container text-center text-md-start py-4">
+        <div class="row">
+          
+          <!-- Info del proyecto -->
+          <div class="col-md-4 mb-3">
+            <h5 class="footer-title">PetShop del Litoral</h5>
+            <p class="footer-text">
+              Tu tienda de confianza para productos de mascotas 🐾
+            </p>
+          </div>
 
+          <!-- Links útiles -->
+          <div class="col-md-4 mb-3">
+            <h5 class="footer-title">Enlaces</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Productos</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+
+          <!-- Integrantes -->
+          <div class="col-md-4 mb-3">
+            <h5 class="footer-title">Integrantes</h5>
+            <ul class="list-unstyled">
+              <li>Nombre Apellido 1</li>
+              <li>Nombre Apellido 2</li>
+              <li>Nombre Apellido 3</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Línea inferior -->
+        <div class="text-center pt-3 border-top mt-3">
+          <small>© 2026 PetShop del Litoral - Todos los derechos reservados</small>
+        </div>
+      </div>
     </footer>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

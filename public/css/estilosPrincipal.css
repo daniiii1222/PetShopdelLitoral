@@ -12,6 +12,7 @@
 
  .texto{
     color:black;
+    font-size: 50px;
 }
 
  .navbar-nav .nav-link {
@@ -29,6 +30,14 @@
   font-style: normal;
 }
 
+.navbar-nav .nav-link {
+  font-size: clamp(14px, 2vw, 20px);
+}
+
+.navbar-nav {
+  gap: 20px;
+}
+
 .logo {
   max-width: 200px;
   height: auto;
@@ -37,37 +46,36 @@
 /*CARD */
 
 .category-card {
-      background-color: #f3e8d3;
-      border-radius: 20px;
-      padding-top: 60px;
-      text-align: center;
-      position: relative;
-      transition: transform 0.2s ease;
-    }
+  text-align: center;
+  border-radius: 15px;
+  background-color: #f2b150;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
-    .category-card:hover {
-      transform: translateY(-5px);
-    }
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
 
-    .category-img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: white;
-    }
+.category-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%; /*  hace la imagen redonda */
+  display: block;
+  margin: 0 auto 15px auto; /*  centra y separa del texto */
+  background-color: #f4f0eb; /* opcional, fondo suave */
+   padding: 10px;/* opcional, da aire */
+}
 
-    .category-title {
-      font-weight: 600;
-      margin-top: 10px;
-    }
+.category-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
 
-    .category-count {
-      color: #777;
-      font-size: 14px;
-    }
+.category-count {
+  color: #6c757d;
+  font-size: 14px;
+}
+
