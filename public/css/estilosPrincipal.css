@@ -1,4 +1,6 @@
-
+.espaciado {
+  margin:60px,0px,0px,60px;
+}
     .contenedorNavSup{
         background: white;
         padding: 20px;
@@ -25,7 +27,7 @@
 
 .custom-navbar,
 .navbar-nav .nav-link {
-  font-family: 'Delicious Handrawn', sans-serif !important;
+  font-family: "Patrick Hand", cursive;
   font-weight: 400;
   font-style: normal;
 }
@@ -46,9 +48,12 @@
 /*CARD */
 
 .category-card {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
   text-align: center;
   border-radius: 15px;
-  background-color: #f2b150;
+  background-color: #ff751f;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
@@ -78,4 +83,11 @@
   color: #6c757d;
   font-size: 14px;
 }
-
+.texto{
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.footer-text{
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+}
