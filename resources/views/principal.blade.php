@@ -4,7 +4,7 @@
 <x-layout title="Home">
 
     <!--Carusel -->
-    <div class="container-fluid mb-3" >
+    <div class="container-fluid mb-3" > 
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
@@ -39,7 +39,7 @@
       <div class= "row row-cols-1 row-cols-md-3 g-4">
         <div class= "col">
           <div class="category-card p-3">
-            <img src="{{ asset('Imagenes/1.png') }}" >
+            <img src="{{ asset('Imagenes/categ-alimento.jpg') }}" >
             <h5 class="category-title">ALIMENTO</h5>
            <!-- <p class="category-count">6 items</p> -->
           </div>
@@ -47,7 +47,7 @@
 
         <div class= "col">
           <div class="category-card p-3">
-            <img src="{{ asset('Imagenes/2.png') }}" >
+            <img src="{{ asset('Imagenes/categ-accesorios.jpg') }}" >
             <h5 class="category-title">ACCESORIOS</h5>
             <!-- <p class="category-count">6 items</p> -->
           </div>
@@ -55,13 +55,14 @@
 
         <div class= "col">
           <div class="category-card p-3">
-            <img src="{{ asset('Imagenes/3.png') }}" >
+            <img src="{{ asset('Imagenes/categ-ropa.jpg') }}" >
             <h5 class="category-title">ROPA</h5>
             <!-- <p class="category-count">6 items</p> -->
           </div> 
         </div>
 
 
+       
       </div>
     </div>
 </x-layout>

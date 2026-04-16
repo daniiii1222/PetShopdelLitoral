@@ -25,3 +25,11 @@ Route::get('/infoContacto', function () {
 Route::get('/terminosYUsos', function () {
     return view('terminosYUsos');
 });
+
+Route::get('/productos', function () {
+    return view('productos');
+});
+
+Route::get('/alimentos', function () {
+    return view('alimentos');
+});

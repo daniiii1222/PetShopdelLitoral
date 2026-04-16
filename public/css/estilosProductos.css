@@ -1,0 +1,56 @@
+.paginaProductos {
+     font-family: "Patrick Hand", cursive;
+}
+
+
+<!--carrouselproductos->
+.carouselProductos {
+  max-width: 800px;
+  width: 90%;        /* más ancho */
+max-width: 1200px;
+  margin: auto;
+}
+
+.card img {
+  height: 240px;
+  object-fit: cover;
+ border-radius: 10px;
+}
+
+<!--boton->
+.btn-custom:hover {
+    background-color: #211815;
+    color: #fdcc6e;
+}
+
+.btn-custom {
+    background-color: #fdcc6e !important;
+    color: #211815 !important;
+    border: 2px solid #211815 !important;
+    padding: 12px 25px;   
+    font-size: 16px;     
+    border-radius: 10px;
+
+    margin: 10px;       
+    cursor: pointer;
+}
+
+<!--carrouselproductos->
+.btn-categoria:hover {
+    background-color: #211815;
+    color: #fdcc6e;
+}
+
+
+.btn-agregar {
+    background-color: #fdcc6e;
+    border: 2px solid #211815;
+    color: #211815;
+}
+
+.btn-agregar:hover {
+    background-color: #211815;
+    color: #fdcc6e;
+}
+
+
