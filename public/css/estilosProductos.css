@@ -54,3 +54,57 @@ max-width: 1200px;
 }
 
 
+
+body {
+    font-family: Arial;
+    background-color: #f5f5f5;
+}
+
+/* TARJETA */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* IMAGEN */
+.card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* TEXTO */
+.card-title {
+    font-size: 18px;
+}
+
+.card-text {
+    font-size: 14px;
+    color: gray;
+}
+
+/* PRECIO */
+.text-success {
+    font-weight: bold;
+}
+
+/* BOTÓN (opcional si no usás btn-dark de Bootstrap) */
+.btn-dark {
+    background-color: #211815;
+    color: #fdcc6e;
+    border: none;
+}
+
+.btn-dark:hover {
+    opacity: 0.85;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body button {
+  margin-top: auto;
+  align-self: center;
+}

@@ -33,3 +33,24 @@ Route::get('/productos', function () {
 Route::get('/alimentos', function () {
     return view('alimentos');
 });
+
+Route::get('/alimentosPerros', function () {
+    return view('alimentosPerros');
+});
+
+Route::get('/alimentosGatos', function () {
+    return view('alimentosGatos');
+});
+
+Route::get('/alimentosCachorros', function () {
+    return view('alimentosCachorros');
+});
+
+Route::get('/accesorios', function () {
+    return view('accesorios');
+});
+
+Route::get('/ropa', function () {
+    return view('ropa');
+});
+

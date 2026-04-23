@@ -1,50 +1,43 @@
-<x-layout title="Alimentos">
+<x-layout title="Alimentos para Gatos">
 
   <div class= "paginaProductos">
     <div class="container mt-4">
 
-      <h2 class="text-center mb-4">Productos</h2>
+      <h2 class="text-center mb-4">Alimentos</h2>
 
-    <h2 class="text-center mt-4">Alimentos</h2>
-    <p class="text-center text-muted">Todo lo que tu mascota necesita para alimentarse 🐾</p>
+    <h2 class="text-center mt-4">Alimentos para gatos</h2>
+    <p class="text-center text-muted">Opciones equilibradas y deliciosas para cuidar la salud y el bienestar de tu gato en cada comida.</p>
 
-    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-      <button class="btn btn-custom">Perros</button>
-    <button class="btn btn-custom">Gatos</button>
-    <button class="btn btn-custom">Cachorros</button>
-    </div>
 
 <div class="container">
     <div class="row" id="productos"></div>
-
-
 <script>
     // Array de productos
     const productos = [
         {
-            nombre: "Balanceado Premium Gato Cachorro",
+            nombre: "Balanceado Premium Gato",
             precio: 8500,
-            imagen: "Imagenes/AlimentoCachorroGato.png"           
-        },
-        {
-            nombre: "Balanceado Perro Cachorro",
-            precio: 7200,
-            imagen: "Imagenes/AlimentoPerroCachorro.png" 
+            imagen: "Imagenes/AlimentoGatoAdulto.png"
         },
         {
             nombre: "Balanceado Gato Adulto",
-            precio: 1500,
-            imagen: "Imagenes/AlimentoGatoAdulto.png" 
+            precio: 7200,
+            imagen: "Imagenes/AlimentoGatoAdulto2.png"
         },
         {
-            nombre: "Balanceado Perro Adulto",
+            nombre: "Alimento Húmedo Lata",
+            precio: 1500,
+            imagen: "Imagenes/AlimentoGatoAdulto3.png"
+        },
+        {
+            nombre: "Balanceado Gato Adulto",
             precio: 2500,
-            imagen: "Imagenes/alimentoPerroAdulto.png" 
+            imagen: "Imagenes/AlimentoHumedoGato.png"
         }
     ];
 
     const contenedor = document.getElementById("productos");
-    productos.forEach(prod => {
+productos.forEach(prod => {
     const card = document.createElement("div");
 
     card.classList.add("col-md-2", "mb-6");

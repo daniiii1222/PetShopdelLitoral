@@ -1,50 +1,47 @@
-<x-layout title="Alimentos">
+<x-layout title="Accesorios">
 
   <div class= "paginaProductos">
     <div class="container mt-4">
 
-      <h2 class="text-center mb-4">Productos</h2>
+      <h2 class="text-center mb-4">Accesorios</h2>
 
-    <h2 class="text-center mt-4">Alimentos</h2>
-    <p class="text-center text-muted">Todo lo que tu mascota necesita para alimentarse 🐾</p>
+    <h2 class="text-center mt-4">Accesorios para tu mascota</h2>
+    <p class="text-center text-muted">Desde juegos hasta paseos, encontrá todo lo que tu mascota necesita para disfrutar al máximo.</p>
 
-    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-      <button class="btn btn-custom">Perros</button>
-    <button class="btn btn-custom">Gatos</button>
-    <button class="btn btn-custom">Cachorros</button>
-    </div>
 
 <div class="container">
     <div class="row" id="productos"></div>
-
-
 <script>
     // Array de productos
     const productos = [
         {
-            nombre: "Balanceado Premium Gato Cachorro",
+            nombre: "Collar",
             precio: 8500,
-            imagen: "Imagenes/AlimentoCachorroGato.png"           
+            imagen: "Imagenes/AccesorioCollar.png"
+            
         },
         {
-            nombre: "Balanceado Perro Cachorro",
+            nombre: "Pechera",
             precio: 7200,
-            imagen: "Imagenes/AlimentoPerroCachorro.png" 
+            imagen: "Imagenes/AccesorioPechera.png"
+            
         },
         {
-            nombre: "Balanceado Gato Adulto",
+            nombre: "Broche",
             precio: 1500,
-            imagen: "Imagenes/AlimentoGatoAdulto.png" 
+            imagen: "Imagenes/AccesorioPlatoDeComida.png"
+            
         },
         {
-            nombre: "Balanceado Perro Adulto",
+            nombre: "Pañuelo",
             precio: 2500,
-            imagen: "Imagenes/alimentoPerroAdulto.png" 
+            imagen: "Imagenes/AccesorioRatrilloGatoAcero.png"
+            
         }
     ];
 
     const contenedor = document.getElementById("productos");
-    productos.forEach(prod => {
+productos.forEach(prod => {
     const card = document.createElement("div");
 
     card.classList.add("col-md-2", "mb-6");
