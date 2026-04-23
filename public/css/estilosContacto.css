@@ -1,0 +1,18 @@
+.pag-contacto {
+    font-family:"Patrick Hand", cursive;
+}
+.banner img {
+  width: 100%;
+  height: clamp(250px, 40vh, 500px);
+  object-fit: cover;
+}
+
+.fondo-form {
+    background-color: #fdcc6e;
+    border-radius: 10px;
+}
+
+.boton-form {
+    background-color: #28211a;
+
+}

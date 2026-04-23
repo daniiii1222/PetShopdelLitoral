@@ -27,8 +27,8 @@
               </ul>
             </li>
             <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Quienes Somos</a></li>
-            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Contacto</a></li>
-            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Terminos y Usos</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/terminosYUsos') }}">Terminos y Usos</a></li>
           </ul>
 
           

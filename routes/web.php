@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,10 +18,13 @@ Route::get('/comercializacion', function () {
     return view('comercializacion');
 });
 
-Route::get('/infoContacto', function () {
-    return view('infoContacto');
-});
 
 Route::get('/terminosYUsos', function () {
     return view('terminosYUsos');
 });
+
+Route::get('/exito', function () {return view('exito');})->name('exito');
+
+Route::get('/contacto', function () { return view('contacto'); });
+
+Route::post('/contacto', [ContactoController::class, 'procesar']);
