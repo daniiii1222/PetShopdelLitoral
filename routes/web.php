@@ -28,3 +28,31 @@ Route::get('/exito', function () {return view('exito');})->name('exito');
 Route::get('/contacto', function () { return view('contacto'); });
 
 Route::post('/contacto', [ContactoController::class, 'procesar']);
+Route::get('/productos', function () {
+    return view('productos');
+});
+
+Route::get('/alimentos', function () {
+    return view('alimentos');
+});
+
+Route::get('/alimentosPerros', function () {
+    return view('alimentosPerros');
+});
+
+Route::get('/alimentosGatos', function () {
+    return view('alimentosGatos');
+});
+
+Route::get('/alimentosCachorros', function () {
+    return view('alimentosCachorros');
+});
+
+Route::get('/accesorios', function () {
+    return view('accesorios');
+});
+
+Route::get('/ropa', function () {
+    return view('ropa');
+});
+

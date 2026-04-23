@@ -12,6 +12,7 @@
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/estilosPrincipal.css') }}"> 
             <link rel="stylesheet" href="{{ asset('css/estilosContacto.css') }}"> 
+            <link rel="stylesheet" href="{{ asset('css/estilosProductos.css') }}"> 
         <!--FUENTE-->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

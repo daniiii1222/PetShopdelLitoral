@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm mi-navbar">
     <div class="container">
-        <img src ="{{ asset('Imagenes/LogoPetShop.png') }}" alt="Foto de un paisaje" width="200" height="100">   
+        <img src ="{{ asset('Imagenes/LogoPetShop.jpg') }}" alt="Foto de un paisaje" width="200" height="100">   
 
         <!-- LOGO -->
         <h1 class="navbar-brand fw-bold" href="#"></h1>
