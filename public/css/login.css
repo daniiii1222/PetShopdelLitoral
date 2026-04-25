@@ -1,0 +1,43 @@
+.contenedor-login {
+    
+    position: fixed;
+    inset: 0;
+
+    display: none; /* oculto al cargar */
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+/* se activa cuando se abre */
+.contenedor-login.activo{
+    display: flex;
+}
+
+.contenedor-login::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(255,255,255,.6);
+    backdrop-filter: blur(4px);
+    z-index:1;
+}
+
+.container-login,
+.container-registro{
+    width: 100%;
+    display:none;
+    position:relative;
+    z-index:2;
+}
+
+.btn-cerrar{
+    position:absolute;
+    top:12px;
+    right:18px;
+    border:none;
+    background:none;
+    font-size:30px;
+    cursor:pointer;
+}

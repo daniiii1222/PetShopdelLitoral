@@ -84,6 +84,25 @@
 
             </div>
         </section>
+            <!--script para el modal-->
+            @if(session('success'))
+
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function(){
+
+                Swal.fire({
+                    title: 'Mensaje enviado',
+                    html: 'Hola <strong>{{ session("nombre") }}</strong>, qué bueno recibir tu mensaje.<br><br>Nos contactaremos al correo: <strong>{{ session("email") }}</strong><br><br>¡Muchas gracias!',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+
+            });
+            </script>
+
+            @endif
 
     </div>
 </x-layout>

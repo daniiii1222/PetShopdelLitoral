@@ -12,11 +12,11 @@ class ContactoController extends Controller
         $email = $request->input('email'); 
         $asunto = $request->input('asunto'); 
         $mensaje = $request->input('mensaje'); 
-        return view('exito',[
-            'nombre' => $nombre, 
-            'email' => $email,
-            'asunto' => $asunto,
-            'mensaje' => $mensaje
-        ]); 
+         return redirect()->back()
+            ->with('success', true)
+            ->with('nombre', $request->nombre)
+            ->with('email', $request->email);
     }
+
+    
 }

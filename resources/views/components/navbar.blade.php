@@ -31,6 +31,8 @@
             <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/terminosYUsos') }}">Terminos y Usos</a></li>
           </ul>
 
+
+
           
           <!-- BUSCADOR -->
           <form class="d-flex me-3">
@@ -42,7 +44,8 @@
 
           <!-- ICONOS -->
           <div class="d-flex gap-3">
-            <i class="bi bi-heart fs-5"></i>
+            
+            <a href="#" onclick="inicioSesion(event)"> <img  src ="{{ asset('Imagenes/usuario.png') }}" ></a>
             <i class="bi bi-cart fs-5"></i>
           </div>
 

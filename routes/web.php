@@ -1,5 +1,8 @@
 <?php
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\LoginController;
+
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,3 +31,6 @@ Route::get('/exito', function () {return view('exito');})->name('exito');
 Route::get('/contacto', function () { return view('contacto'); });
 
 Route::post('/contacto', [ContactoController::class, 'procesar']);
+
+Route::get('/formularioLogin', [LoginController::class, 'login'])->name('login');
+//Route::post('/formularioLogin', [LoginController::class, 'login']);
