@@ -1,27 +1,8 @@
 <?php
+namespace App\Http\Controllers;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ControladorPrincipal;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/principal', function () {
-    return view('principal');
-});
-
-Route::get('/quienesSomos', function () {
-    return view('quienesSomos');
-});
-
-Route::get('/comercializacion', function () {
-    return view('comercializacion');
-});
-
-
-Route::get('/terminosYUsos', function () {
-    return view('terminosYUsos');
-});
 
 Route::get('/exito', function () {return view('exito');})->name('exito');
 
@@ -56,3 +37,9 @@ Route::get('/ropa', function () {
     return view('ropa');
 });
 
+Route::get('/', [ControladorPrincipal::class, 'inicio'])->name('principal');
+Route::get('/quienesSomos', [ControladorPrincipal::class, 'nosotros'])->name('quienesSomos');
+Route::get('/contacto', [ControladorPrincipal::class, 'contacto'])->name('contacto');
+Route::get('/terminosYUsos', [ControladorPrincipal::class, 'terminos'])->name('terminosYUsos');
+Route::get('/categorias', [ControladorPrincipal::class, 'categorias'])->name('categorias');
+Route::get('/comercializacion', [ControladorPrincipal::class, 'comercializacion'])->name('comercializacion');
