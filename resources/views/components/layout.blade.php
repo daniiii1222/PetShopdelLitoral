@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="{{ asset('css/estilosPrincipal.css') }}"> 
             <link rel="stylesheet" href="{{ asset('css/estilosContacto.css') }}"> 
             <link rel="stylesheet" href="{{ asset('css/estilosProductos.css') }}"> 
+            <link rel="stylesheet" href="{{ asset('css/login.css') }}"> 
         <!--FUENTE-->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +22,12 @@
 
     <body>
         <x-navbar/>
+        <x-login/>
         <main >
             {{ $slot }}
         </main>
         <x-footer/>
-       
+       <script src="{{ asset('js/login.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
     </body>
 </html>
