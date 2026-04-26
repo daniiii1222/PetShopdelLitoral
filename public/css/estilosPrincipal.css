@@ -27,7 +27,7 @@
   font-family: "Patrick Hand", cursive;
   font-weight: 400;
   font-style: normal;
-  color:#fdcc6e;
+  
 }
 
 .navbar-nav .nav-link {
@@ -92,46 +92,54 @@
 .footer-text{
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
 }
-
-.card {
-    border: none;
-    border-radius: 15px;
-    transition: all 0.3s ease;
+.btn-primary {
+  background-color: #211815 !important; /* marrón oscuro */
+  border-color: #211815 !important;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+.btn-primary:hover {
+  background-color: #211815 !important; /* más oscuro al hover */
+  border-color: #211815 !important;
 }
 
-.banner-superior{
-    width:100%;
-    overflow:hidden;
-    background:#fdcc6e;
-    padding:8px 0;
-    white-space: nowrap;
+.custom-card {
+  position: relative;
+  border: none;
+  border-radius: 16px;
+  color: #211815;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  background: linear-gradient(145deg, #fdcc6e, #f4b95c);
 }
 
-.texto-movil{
-    display:inline-block;
-    white-space: nowrap;
 
-    /* empieza totalmente fuera a la derecha */
-    transform: translateX(100vw);
 
-    animation: deslizar 15s linear infinite;
+.custom-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.2),  /* 👈 menos blanco */
+    rgba(255,255,255,0) 50%
+  );
 }
 
-.texto-movil:hover{
-    animation-play-state: paused;
+.custom-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15),
+              0 10px 20px rgba(0,0,0,0.1);
 }
 
-@keyframes deslizar{
-    from{
-        transform: translateX(100vw);
-    }
-
-    to{
-        transform: translateX(-100%);
-    }
+.custom-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
 }
