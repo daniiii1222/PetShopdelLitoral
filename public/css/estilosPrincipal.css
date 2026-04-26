@@ -12,25 +12,15 @@
        color:blue;
     }
 
- 
-
- .navbar-nav .nav-link {
-  color: #211815 !important;
-  
-}
 .mi-navbar .container {
-  padding: 50px;
+  padding: 10px 20px; 
 }
 
-.custom-navbar,
 .navbar-nav .nav-link {
   font-family: "Patrick Hand", cursive;
   font-weight: 400;
   font-style: normal;
-  
-}
-
-.navbar-nav .nav-link {
+  color:#211815;
   font-size: clamp(14px, 2vw, 20px);
 }
 
@@ -143,3 +133,36 @@
   pointer-events: none;
   box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
 }
+
+
+.banner-superior {
+  background-color: #fdcc6e; /* amarillo */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.texto-movil {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moverTexto 12s linear infinite;
+  color: #211815;
+  font-family: "Patrick Hand", cursive;
+}
+
+/* animación */
+@keyframes moverTexto {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* pausa al pasar el mouse */
+.texto-movil:hover {
+  animation-play-state: paused;
+}
+
+
