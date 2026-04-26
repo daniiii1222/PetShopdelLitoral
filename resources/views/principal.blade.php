@@ -2,7 +2,7 @@
           
 
 <x-layout title="Home">
-
+<div class="pagina-contacto">
     <!--Carusel -->
     <div class="container-fluid mb-3" > 
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -35,34 +35,125 @@
     </div>
 
     <!-- CATEGORIAS -->
-    <div class= "container espaciado">
-      <div class= "row row-cols-1 row-cols-md-3 g-4">
+    <div class="container" >
+      <h2 class="text-center mb-4">Productos</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center text-center">
         <div class= "col">
-          <div class="category-card p-3">
+          <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-alimento.jpg') }}" >
-            <h5 class="category-title">ALIMENTO</h5>
+             <a href="{{ url('/alimentos') }}" class="btn btn-custom">ALIMENTOS</a>
            <!-- <p class="category-count">6 items</p> -->
           </div>
         </div>
 
         <div class= "col">
-          <div class="category-card p-3">
+          <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-accesorios.jpg') }}" >
-            <h5 class="category-title">ACCESORIOS</h5>
+             <a href="{{ url('/accesorios') }}" class="btn btn-custom">ACCESORIOS</a>
             <!-- <p class="category-count">6 items</p> -->
           </div>
         </div>
 
         <div class= "col">
-          <div class="category-card p-3">
+          <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-ropa.jpg') }}" >
-            <h5 class="category-title">ROPA</h5>
+             <a href="{{ url('/ropa') }}" class="btn btn-custom">ROPA</a>
+            
             <!-- <p class="category-count">6 items</p> -->
           </div> 
         </div>
-
-
-       
       </div>
     </div>
+
+    <!--Novedades-->
+
+    <section class="container my-5">
+
+    <h2 class="text-center mb-4">Preguntas Frecuentes</h2>
+
+    <div class="accordion" id="faqAccordion">
+
+        <!-- Pregunta 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+
+                <button class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq1">
+
+                    ¿Realizan envíos?
+                </button>
+
+            </h2>
+
+            <div id="faq1"
+                 class="accordion-collapse collapse show"
+                 data-bs-parent="#faqAccordion">
+
+                <div class="accordion-body">
+                    Sí, contamos con envíos dentro de Corrientes y zonas cercanas.
+                    Además ofrecemos envío gratis en compras superiores a $50.000.
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Pregunta 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq2">
+
+                    ¿Qué medios de pago aceptan?
+                </button>
+
+            </h2>
+
+            <div id="faq2"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+
+                <div class="accordion-body">
+                    Aceptamos efectivo, transferencias y tarjetas de débito y crédito.
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Pregunta 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq3">
+
+                    ¿Puedo cambiar un producto?
+                </button>
+
+            </h2>
+
+            <div id="faq3"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+
+                <div class="accordion-body">
+                    Sí, podés solicitar cambios por productos con fallas o errores
+                    dentro de las 48 horas posteriores a la compra.
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</div>
 </x-layout>

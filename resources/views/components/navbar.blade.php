@@ -16,19 +16,20 @@
 
           <!-- MENU -->
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
             
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Comercializacion</a>
+              <a class="nav-link dropdown-toggle" href="{{ url('/productos') }}" data-bs-toggle="dropdown">Productos</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Alimento</a></li>
-                <li><a class="dropdown-item" href="#">Accesorios</a></li>
-                <li><a class="dropdown-item" href="#">Ropa</a></li>
+                <li><a class="dropdown-item" href="{{ url('/productos') }}">Todos</a></li>
+                <li><a class="dropdown-item" href="{{ url('/alimentos') }}">Alimento</a></li>
+                <li><a class="dropdown-item" href="{{ url('/accesorios') }}">Accesorios</a></li>
+                <li><a class="dropdown-item" href="{{ url('/ropa') }}">Ropa</a></li>
               </ul>
             </li>
-            <li class="nav-item" class = "texto" ><a class="nav-link" href="#">Quienes Somos</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/comercializacion') }}">Comercialización</a></li>
+            <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/quienesSomos') }}">Quienes Somos</a></li>
             <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
-            <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/terminosYUsos') }}">Terminos y Usos</a></li>
           </ul>
 
 

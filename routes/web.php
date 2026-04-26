@@ -48,4 +48,9 @@ Route::get('/categorias', [ControladorPrincipal::class, 'categorias'])->name('ca
 Route::get('/comercializacion', [ControladorPrincipal::class, 'comercializacion'])->name('comercializacion');
 
 Route::get('/formularioLogin', [LoginController::class, 'login'])->name('login');
-//Route::post('/formularioLogin', [LoginController::class, 'login']);
+Route::post('/formularioLogin', [LoginController::class, 'login']);
+
+ Route::post('/registro', [LoginController::class, 'procesarLogin']) ->name('registro.procesarLogin');
+ Route::post('/procesarRegistro', [LoginController::class, 'procesarRegistro']) ->name('procesarRegistro.procesarRegistro');
+    
+    

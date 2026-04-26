@@ -1,5 +1,5 @@
-.espaciado {
-  margin:60px 0px 0px 60px;
+.pagina-contacto {
+   font-family: "Patrick Hand", cursive !important;
 }
     .contenedorNavSup{
         background: white;
@@ -102,4 +102,36 @@
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.banner-superior{
+    width:100%;
+    overflow:hidden;
+    background:#fdcc6e;
+    padding:8px 0;
+    white-space: nowrap;
+}
+
+.texto-movil{
+    display:inline-block;
+    white-space: nowrap;
+
+    /* empieza totalmente fuera a la derecha */
+    transform: translateX(100vw);
+
+    animation: deslizar 15s linear infinite;
+}
+
+.texto-movil:hover{
+    animation-play-state: paused;
+}
+
+@keyframes deslizar{
+    from{
+        transform: translateX(100vw);
+    }
+
+    to{
+        transform: translateX(-100%);
+    }
 }

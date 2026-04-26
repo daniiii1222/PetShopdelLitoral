@@ -29,3 +29,14 @@ function cerrarModal(){
     document.querySelector('.contenedor-login')
         .classList.remove('activo');
 }
+
+//document.addEventListener('DOMContentLoaded', function(){
+
+    Swal.fire({
+        title: 'Mensaje enviado',
+        html: 'Hola <strong>{{ session("nombre") }}</strong>, qué bueno recibir tu mensaje.<br><br>Nos contactaremos al correo: <strong>{{ session("email") }}</strong><br><br>¡Muchas gracias!',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
+
+ //   });

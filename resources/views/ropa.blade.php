@@ -10,7 +10,7 @@
 
 
 <div class="container">
-    <div class="row" id="productos"></div>
+    <div class="row justify-content-center" id="productos"></div>
 <script>
     // Array de productos
     const productos = [

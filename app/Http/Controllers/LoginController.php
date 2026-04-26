@@ -19,7 +19,26 @@ class LoginController extends Controller
          return view('formularioLogin');
     }
 
-    
+
+    public function procesarLogin(Request $request) {
+         $datos = $request->all();
+
+            // Guardar en BD
+
+            return redirect()->back()
+            ->with('success', 'Usuario logueado');
+           
+    }
+
+   public function procesarRegistro(Request $request) {
+         $datos = $request->all();
+
+            // Guardar en BD
+
+            return redirect()->back()
+            ->with('success', 'Usuario registrado');
+           
+    }
 
     
 }

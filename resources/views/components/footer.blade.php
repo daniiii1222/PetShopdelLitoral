@@ -14,8 +14,8 @@
           <div class="col-md-4 mb-3">
             <h5 class="footer-title">Enlaces</h5>
             <ul class="list-unstyled footer-text">
-              <li><a href="{{ url('/principal') }}">Inicio</a></li>
-              <li><a href="#">Productos</a></li>
+              <li><a href="{{ url('/') }}">Inicio</a></li>
+              <li><a href="{{ url('/productos') }}">Productos</a></li>
               <li><a href="{{ url('/contacto') }}">Contacto</a></li>
             </ul>
           </div>

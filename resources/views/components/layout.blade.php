@@ -21,6 +21,7 @@
     </head>
 
     <body>
+         <x-bannerSuperior/>
         <x-navbar/>
         <x-login/>
         <main >

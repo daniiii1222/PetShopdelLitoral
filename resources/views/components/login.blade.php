@@ -18,7 +18,7 @@
                 </p>
             </div>
 
-            <form action="#" method="POST">
+            <form action="{{ route('registro.procesarLogin') }}" method="POST">
                 @csrf
 
                 <div class="mb-3">
@@ -90,7 +90,7 @@
                 <h2>Crear cuenta</h2>
             </div>
 
-            <form action="#" method="POST">
+            <form action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST">
                 @csrf
 
                 <div class="mb-3">
@@ -130,7 +130,7 @@
                     </label>
                 </div>
 
-                <button class="btn btn-dark w-100 rounded-pill">
+                <button type="submit" class="btn btn-dark w-100 rounded-pill">
                     Crear cuenta
                 </button>
 

@@ -1,7 +1,7 @@
 <x-layout title="Terminos">
     <div class="pag-contacto">
         <div class="banner">
-        <img src ="{{ asset('Imagenes/Terminos.png') }}" alt="banner">  
+        <img src ="{{ asset('Imagenes/TerminosYusos.png') }}" alt="banner">  
 
     </div>
     <div class="container py-5">
@@ -11,7 +11,7 @@
 
                 <div class="card shadow-sm border-0 rounded-4">
                     <div class="card-body p-4 p-md-5">
-
+                        <h2 class="text-center mb-4">Terminos de uso y politicas de privacidad</h2>
 
                         <p class="text-muted text-center mb-4">
                             Última actualización: {{ date('d/m/Y') }}
@@ -58,6 +58,37 @@
                             Para consultas, podés comunicarte a través de nuestro formulario de contacto.
                         </p>
 
+                        <h5 class="fw-bold mt-4">7. Privacidad y protección de datos</h5>
+                        <p class="text-muted">
+                        Los datos personales ingresados por los usuarios (nombre, correo electrónico, teléfono y dirección)
+                        serán tratados de manera confidencial y utilizados únicamente para gestionar consultas,
+                        pedidos o brindar información sobre productos y servicios.
+                        </p>
+
+                        <p class="text-muted">
+                        Petshop del Litoral no comercializa ni cede información personal a terceros.
+                        Se adoptan medidas razonables para proteger los datos almacenados.
+                        </p>
+
+                        <h5 class="fw-bold mt-4">8. Uso de cookies</h5>
+                        <p class="text-muted">
+                        Este sitio puede utilizar cookies para mejorar la navegación, recordar preferencias
+                        del usuario y optimizar la experiencia dentro de la plataforma.
+                        </p>
+
+                        <h5 class="fw-bold mt-4">9. Productos, precios y disponibilidad</h5>
+                        <p class="text-muted">
+                        Los precios, promociones y disponibilidad de productos publicados pueden modificarse
+                        sin previo aviso. La información presentada en el sitio tiene fines informativos
+                        y está sujeta a actualización.
+                        </p>
+
+                        <h5 class="fw-bold mt-4">10. Seguridad del sitio</h5>
+                        <p class="text-muted">
+                        No está permitido intentar alterar el funcionamiento del sitio,
+                        acceder sin autorización a áreas restringidas o realizar acciones
+                        que comprometan la seguridad de la plataforma.
+                        </p>
                     </div>
                 </div>
 

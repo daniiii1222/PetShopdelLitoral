@@ -9,13 +9,13 @@
     <p class="text-center text-muted">Todo lo que tu mascota necesita para alimentarse 🐾</p>
 
     <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-      <button class="btn btn-custom">Perros</button>
-    <button class="btn btn-custom">Gatos</button>
-    <button class="btn btn-custom">Cachorros</button>
+      <a href="{{ url('/alimentosPerros') }}" class="btn btn-custom">Perro</a>
+     <a href="{{ url('/alimentosGatos') }}" class="btn btn-custom">Gato</a>
+     <a href="{{ url('/alimentosCachorros') }}" class="btn btn-custom">Cachorros</a>
     </div>
 
 <div class="container">
-    <div class="row" id="productos"></div>
+    <div class="row justify-content-center" id="productos"></div>
 
 
 <script>
