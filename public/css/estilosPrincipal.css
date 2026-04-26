@@ -135,34 +135,36 @@
 }
 
 
-.banner-superior {
-  background-color: #fdcc6e; /* amarillo */
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
+.banner-superior{
+    width:100%;
+    overflow:hidden;
+    background:#fdcc6e;
+    padding:8px 0;
+    white-space: nowrap;
 }
 
-.texto-movil {
-  display: inline-block;
-  padding-left: 100%;
-  animation: moverTexto 12s linear infinite;
-  color: #211815;
-  font-family: "Patrick Hand", cursive;
+.texto-movil{
+    display:inline-block;
+    white-space: nowrap;
+
+    /* empieza totalmente fuera a la derecha */
+    transform: translateX(100vw);
+
+    animation: deslizar 15s linear infinite;
 }
 
-/* animación */
-@keyframes moverTexto {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.texto-movil:hover{
+    animation-play-state: paused;
 }
 
-/* pausa al pasar el mouse */
-.texto-movil:hover {
-  animation-play-state: paused;
+@keyframes deslizar{
+    from{
+        transform: translateX(100vw);
+    }
+
+    to{
+        transform: translateX(-100%);
+    }
 }
 
 
