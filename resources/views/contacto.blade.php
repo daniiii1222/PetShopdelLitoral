@@ -48,9 +48,9 @@
 
                 </div>
                 <div class="col-lg-6 col-md-8">
-                        <!-- Título -->
+                       
                 
-            
+                <!-- Título -->
                 <h2 class="mb-8">Encontranos en</h2>
 
                     <!-- Redes / contacto -->
@@ -73,7 +73,8 @@
                     <!-- Mapa -->
                     <div class="ratio ratio-4x3 w-75 mx-auto">
                         <iframe 
-                            src="https://www.google.com/maps?q=Corrientes,Argentina&output=embed"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.1055964934553!2d-58.785145524614485!3d-27.465971716547347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456ae1f9f545a7%3A0x4480e6b34abd15ce!2sCampus%20Unne!5e0!3m2!1ses!2sar!4v1777469876264!5m2!1ses!2sar"
+                            
                             style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy">
@@ -86,8 +87,6 @@
         </section>
             <!--script para el modal-->
             @if(session('success'))
-
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
             <script>
             document.addEventListener('DOMContentLoaded', function(){

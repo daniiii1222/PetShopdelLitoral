@@ -2,12 +2,11 @@
      font-family: "Patrick Hand", cursive;
 }
 
-
 <!--carrouselproductos->
 .carouselProductos {
   max-width: 800px;
-  width: 90%;        /* más ancho */
-max-width: 1200px;
+  width: 90%;        
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -54,7 +53,6 @@ max-width: 1200px;
 }
 
 
-
 body {
     font-family: Arial;
     background-color: #f5f5f5;
@@ -88,7 +86,7 @@ body {
     font-weight: bold;
 }
 
-/* BOTÓN (opcional si no usás btn-dark de Bootstrap) */
+/* BOTÓN */
 .btn-dark {
     background-color: #211815;
     color: #fdcc6e;

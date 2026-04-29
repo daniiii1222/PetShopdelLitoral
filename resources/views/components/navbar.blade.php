@@ -32,9 +32,6 @@
             <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/contacto') }}">Contacto</a></li>
           </ul>
 
-
-
-          
           <!-- BUSCADOR -->
           <form class="d-flex me-3">
             <input class="form-control" type="search" placeholder="Search here...">
