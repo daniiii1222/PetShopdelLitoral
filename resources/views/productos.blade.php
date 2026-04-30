@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 </div>
-
+               
                 <div class="col-md-3">
                 <div class="card">
                     <img src ="{{ asset('Imagenes/AlimentoPerroCachorro.png') }}" class="card-img-top">
