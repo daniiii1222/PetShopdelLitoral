@@ -10,7 +10,7 @@
     <div class="container mt-5 texto">
 
         <!-- TITULO -->
-        <h2 class="text-center mb-3">Comercialización</h2>
+        
         <p class="text-center text-muted mb-5">
             Conocé nuestras opciones de envío, pago y condiciones para comprar fácil y seguro 🐾
         </p>

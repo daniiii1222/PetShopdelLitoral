@@ -57,6 +57,7 @@
   margin: 0 auto 15px auto; 
   background-color: #f4f0eb; 
   padding: 10px;
+  
 }
 
 .category-title {
@@ -254,3 +255,15 @@
   color: #bbb;
 }
 
+/* Accordion abierto */
+.accordion-button:not(.collapsed) {
+    background-color: #fdcc6e !important;
+    color: #211815 !important;
+    box-shadow: none !important;
+}
+
+/* cuando hacés click (focus) */
+.accordion-button:focus {
+    box-shadow: none !important;
+    border-color: #fdcc6e !important;
+}
