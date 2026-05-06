@@ -21,21 +21,41 @@
                         <div class="mb-3">
                         <label class="form-label">Nombre</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Tu nombre">
+                        @error ('nombre')
+                            <small class = "text-danger">
+                                {{$message}}
+                            </small>
+                        @enderror
                         </div>
 
                         <div class="mb-3">
                         <label class="form-label">Correo electrónico</label>
                         <input type="email" name="email" class="form-control" placeholder="ejemplo@mail.com">
+                         @error ('email')
+                            <small class = "text-danger">
+                               {{$message}}
+                            </small>
+                        @enderror
                         </div>
 
                         <div class="mb-3">
                         <label class="form-label">Asunto</label>
                         <input type="text" name="asunto" class="form-control">
+                         @error ('asunto')
+                            <small class = "text-danger">
+                                {{$message}}
+                            </small>
+                        @enderror
                         </div>
 
                         <div class="mb-3">
                         <label class="form-label">Mensaje</label>
                         <textarea class="form-control" name="mensaje" rows="5"></textarea>
+                         @error ('mensaje')
+                            <small class = "text-danger">
+                                {{$message}}
+                            </small>
+                        @enderror
                         </div>
 
                         <button type="submit" class="boton-form text-white w-100 rounded-pill">

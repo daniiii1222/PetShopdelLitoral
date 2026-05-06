@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactoRequest;
 
 class ContactoController extends Controller
 {
@@ -17,5 +18,15 @@ class ContactoController extends Controller
             ->with('email', $request->email);
     }
 
+    public function store_contact(ContactoRequest $request){
+        $datos = $request->validate();
+
+        $nombre = $datos['nombre'];
+        $email = $datos['email'];
+        $asunto = $datos['asunto'];
+        $mensaje = $datos['mensaje'];
+
+       
+    }
     
 }

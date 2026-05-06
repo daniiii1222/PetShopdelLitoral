@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/exito', function () {return view('exito');})->name('exito');
 
-Route::get('/contacto', function () { return view('contacto'); });
+Route::post('/contacto', [ContactoController::class, 'store_contact']);
 
-Route::post('/contacto', [ContactoController::class, 'procesar']);
 Route::get('/productos', function () {
     return view('productos');
 });
