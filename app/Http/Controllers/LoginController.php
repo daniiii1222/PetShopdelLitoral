@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
-
+use App\Http\Requests\RegistroRequest;
+use App\Models\Usuario;
 
 
 class LoginController extends Controller
@@ -38,14 +39,28 @@ class LoginController extends Controller
            
     }
 
-   public function procesarRegistro(Request $request) {
-         $datos = $request->all();
+   public function procesarRegistro(RegistroRequest $request)
+    {
+        $datos = $request->validated();
 
-            // Guardar en BD
+            $nombreRegistro=  $datos['nombreRegistro'];
+            $apellido=  $datos['apellido'];
+            $correo= $datos['correo'];
+            $telefono= $datos['telefono'];
+            $contraseña= $datos['contraseña'];
+            $password_confirmation= $datos['password_confirmation'];
 
-            return redirect()->back()
-            ->with('registro_success', 'Usuario registrado');
-           
-    }
+            //Guardar en BD
+           Usuario::create([
+            'nombreRegistro' => $nombreRegistro,
+            'apellido' => $apellido,
+            'correo' => $correo,
+            'telefono' => $telefono,
+            'contraseña' => $contraseña,
+        ]);
 
+        return redirect()->back()
+            ->with('registro_success', true)
+            ->with('nombreRegistro', $datos['nombreRegistro']);
+ }
 }
