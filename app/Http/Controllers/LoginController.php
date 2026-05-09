@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+
+
 
 class LoginController extends Controller
 {
@@ -20,13 +23,18 @@ class LoginController extends Controller
     }
 
 
-    public function procesarLogin(Request $request) {
-         $datos = $request->all();
+    public function procesarLogin(LoginRequest $request) {
+          $datos = $request->validated();
+        
+        $email = $datos['email_login'];
+        $password = $datos['password'];
+
+    
 
             // Guardar en BD
 
             return redirect()->back()
-            ->with('success', 'Usuario logueado');
+            ->with('login_success', 'Usuario logueado');
            
     }
 
@@ -36,9 +44,8 @@ class LoginController extends Controller
             // Guardar en BD
 
             return redirect()->back()
-            ->with('success', 'Usuario registrado');
+            ->with('registro_success', 'Usuario registrado');
            
     }
 
-    
 }

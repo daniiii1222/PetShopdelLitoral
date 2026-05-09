@@ -106,7 +106,7 @@
             </div>
         </section>
             <!--script para el modal-->
-            @if(session('success'))
+            @if(session('contacto_success'))
 
             <script>
             document.addEventListener('DOMContentLoaded', function(){

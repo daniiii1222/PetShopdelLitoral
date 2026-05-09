@@ -1,5 +1,6 @@
 
-<div class="contenedor-login pag-contacto" >
+<div class="contenedor-login pag-contacto"
+     data-login-errors="{{ $errors->has('email_login') || $errors->has('password') }}">
     <div class="container-login">
        
         <section class="form-login container min-vh-100 d-flex align-items-center justify-content-center">
@@ -18,7 +19,11 @@
                     </p>
                 </div>
 
-                <form action="{{ route('registro.procesarLogin') }}" method="POST">
+                   
+                <form id="formLogin"
+                    action="{{ route('registro.procesarLogin') }}"
+                    method="POST"
+                    novalidate>
                     @csrf
 
                     <div class="mb-3">
@@ -27,8 +32,14 @@
                             type="email"
                             class="form-control"
                             placeholder="ejemplo@mail.com"
-                            name="email"
+                            name="email_login"
+                            
                         >
+                         @error ('email_login')
+                            <small class = "text-danger">
+                                {{$message}}
+                            </small>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -38,7 +49,13 @@
                             class="form-control"
                             placeholder="********"
                             name="password"
+                            
                         >
+                         @error ('password')
+                            <small class = "text-danger">
+                                {{$message}}
+                            </small>
+                        @enderror
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
@@ -52,11 +69,17 @@
                         </a>
                     </div>
 
-                    <button class="btn btn-dark w-100 rounded-pill">
+                    <button type="submit" class="btn btn-dark w-100 rounded-pill">
                         Ingresar
                     </button>
 
                 </form>
+                  @if(session('login_success'))
+                    <div class="alert alert-success">
+                     {{ session('login_success') }}
+                    </div>
+                    @endif
+
 
                 <hr>
 
