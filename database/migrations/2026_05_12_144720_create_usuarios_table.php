@@ -16,6 +16,7 @@ return new class extends Migration
         $table->string('correo', 250)->unique();
         $table->string('telefono', 10);
         $table->string('contraseña');
+        $table->foreignId('perfil_id')->constrained('perfiles');
         $table->boolean('estado');
        
         $table->timestamps();

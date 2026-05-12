@@ -11,6 +11,7 @@ class Usuario extends Model
     'correo',
     'telefono',
     'contraseña',
+    'perfil_id',
     'estado',
     ];
 }

@@ -55,6 +55,9 @@ class LoginController extends Controller
             'correo' => $correo,
             'telefono' => $telefono,
             'contraseña' => $contraseña,
+
+             'perfil_id' => 1, // cliente
+             'estado' =>1
         ]);
 
         return redirect()->back()
