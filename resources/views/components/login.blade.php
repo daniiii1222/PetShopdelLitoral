@@ -101,7 +101,7 @@
         <div class="container-registro">
         <section class=" container min-vh-100 d-flex align-items-center justify-content-center">
             
-            <div class="card shadow border-0 rounded-4 p-4 position-relative" style="max-width:420px; width:100%;">
+            <div class="card shadow border-0 rounded-4 p-3 position-relative" style="max-width:420px; width:80%;">
 
                 <button type="button"
                 class="btn-cerrar"
@@ -109,74 +109,72 @@
                 X
                 </button>
 
-                <div class="text-center mb-4">
+                <div class="text-center mb-3">
                     <h2>Crear cuenta</h2>
                 </div>
 
                 <form action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST">
                     @csrf
+                    
+                        <div class="mb-2">
+                            <label class="form-label">Nombre y Apellido</label>
+                            <input type="text" name="nombreRegistro" class="form-control">
 
-                    <div class="mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input type="text" name="nombreRegistro" class="form-control">
-                    </div>
-                    @error ('nombreRegistro')
-                            <small class = "text-danger">
-                                {{$message}}
-                            </small>
-                        @enderror
-
-                    <div class="mb-3">
-                        <label class="form-label">Apellido</label>
-                        <input type="text" name="apellido" class="form-control">
-                    </div>
-                    @error ('apellido')
-                            <small class = "text-danger">
-                                {{$message}}
-                            </small>
-                        @enderror
+                            @error ('nombreRegistro')
+                                <small class = "text-danger">
+                                    {{$message}}
+                                </small>
+                            @enderror
+                        </div>
+                        
+                    
                     
 
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">Correo electrónico</label>
                         <input type="email" name="correo" class="form-control">
-                    </div>
-                    @error ('correo')
+                         @error ('correo')
                             <small class = "text-danger">
                                 {{$message}}
                             </small>
                         @enderror
+                    </div>
+                   
 
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label">Teléfono</label>
                         <input type="text" name="telefono" class="form-control">
-                    </div>
-                    @error ('telefono')
+                        @error ('telefono')
                             <small class = "text-danger">
                                 {{$message}}
                             </small>
                         @enderror
+                    </div>
+                    
+                    <div class="row">
+                        <div class="mb-2">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" name="contraseña" class="form-control">
+                            @error ('contraseña')
+                                <small class = "text-danger">
+                                    {{$message}}
+                                </small>
+                            @enderror
+                        </div>
+                        
 
-                    <div class="mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" name="contraseña" class="form-control">
+                        <div class="mb-2">
+                            <label class="form-label">Confirmar contraseña</label>
+                            <input type="password" name="password_confirmation" class="form-control">
+                            @error ('password_confirmation')
+                                <small class = "text-danger">
+                                    {{$message}}
+                                </small>
+                            @enderror
+                        </div>
                     </div>
-                    @error ('contraseña')
-                            <small class = "text-danger">
-                                {{$message}}
-                            </small>
-                        @enderror
-
-                    <div class="mb-3">
-                        <label class="form-label">Confirmar contraseña</label>
-                        <input type="password" name="password_confirmation" class="form-control">
-                    </div>
-                    @error ('password_confirmation')
-                            <small class = "text-danger">
-                                {{$message}}
-                            </small>
-                        @enderror
-                    <div class="form-check mb-4">
+                      
+                    <div class="form-check mb-2">
                         <input class="form-check-input" type="checkbox" id="terminos">
                         <label class="form-check-label" for="terminos">
                             Acepto términos y condiciones
