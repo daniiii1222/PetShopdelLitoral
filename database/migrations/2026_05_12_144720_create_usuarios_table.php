@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    
     public function up(): void
     {
         
@@ -18,8 +16,9 @@ return new class extends Migration
         $table->string('correo', 250)->unique();
         $table->string('telefono', 10);
         $table->string('contraseña');
+        $table->boolean('estado');
+       
         $table->timestamps();
-
         });
     }
 
