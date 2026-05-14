@@ -117,7 +117,7 @@
                     @csrf
                     
                         <div class="mb-2">
-                            <label class="form-label">Nombre y Apellido</label>
+                            <label class="form-label">Nombre</label>
                             <input type="text" name="nombreRegistro" class="form-control">
 
                             @error ('nombreRegistro')
@@ -127,9 +127,19 @@
                             @enderror
                         </div>
                         
-                    
-                    
+                        <div class="mb-2">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-control">
 
+                            @error ('apellido')
+                                <small class = "text-danger">
+                                    {{$message}}
+                                </small>
+                            @enderror
+                        </div>
+                        
+                    
+                    
                     <div class="mb-2">
                         <label class="form-label">Correo electrónico</label>
                         <input type="email" name="correo" class="form-control">
@@ -154,8 +164,8 @@
                     <div class="row">
                         <div class="mb-2">
                             <label class="form-label">Contraseña</label>
-                            <input type="password" name="contraseña" class="form-control">
-                            @error ('contraseña')
+                            <input type="password" name="contrasenia" class="form-control">
+                            @error ('contrasenia')
                                 <small class = "text-danger">
                                     {{$message}}
                                 </small>

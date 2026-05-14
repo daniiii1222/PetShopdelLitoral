@@ -29,7 +29,7 @@ class LoginController extends Controller
         
         $email = $datos['email_login'];
         $password = $datos['password'];
-
+        
     
 
             // Guardar en BD
@@ -44,20 +44,21 @@ class LoginController extends Controller
         $datos = $request->validated();
 
             $nombreRegistro=  $datos['nombreRegistro'];
+            $apellido= $datos['apellido'];
             $correo= $datos['correo'];
             $telefono= $datos['telefono'];
-            $contraseña= Hash::make($datos['contraseña']);
+            $contrasenia= Hash::make($datos['contrasenia']);
             $password_confirmation= $datos['password_confirmation'];
 
             //Guardar en BD
            Usuario::create([
             'nombreRegistro' => $nombreRegistro,
+            'apellido' => $apellido,
             'correo' => $correo,
             'telefono' => $telefono,
-            'contraseña' => $contraseña,
-
-             'perfil_id' => 1, // cliente
-             'estado' =>1
+            'contrasenia' => $contrasenia, 
+            'perfil_id' => 1, // cliente
+            'estado' => 1
         ]);
 
         return redirect()->back()
