@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistroRequest;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;   // IMPORTANTE para la contraseña
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -24,27 +25,42 @@ class LoginController extends Controller
     }
 
 
-    public function procesarLogin(LoginRequest $request) {
-          $datos = $request->validated();
-        
-        $email = $datos['email_login'];
-        $password = $datos['password'];
-        
-    
+    public function procesarLogin(LoginRequest $request)
+    {
+        $datos = $request->validated();
 
-            // Guardar en BD
+        $credenciales = [
+            'correo' => $datos['email_login'],
+            'contrasenia' => $datos['contrasenia']
+        ];
 
-            return redirect()->back()
-            ->with('login_success', 'Usuario logueado');
-           
+        if (Auth::attempt($credenciales)) {
+
+            $request->session()->regenerate();
+
+            $usuario = Auth::user();
+
+            if ($usuario->perfil_id == 2) {
+                return redirect('/admin');
+
+            } elseif ($usuario->perfil_id == 1) {
+                return redirect('/principal');
+            }
+
+            return redirect('/');
+        }
+
+        return redirect()->back()
+            ->withErrors([
+                'login_error' => 'Correo o contraseña incorrectos'
+            ]);
     }
-
    public function procesarRegistro(RegistroRequest $request)
     {
         $datos = $request->validated();
 
             $nombreRegistro=  $datos['nombreRegistro'];
-            $apellido= $datos['apellido'];
+            $apellido=  $datos['apellido'];
             $correo= $datos['correo'];
             $telefono= $datos['telefono'];
             $contrasenia= Hash::make($datos['contrasenia']);
@@ -56,9 +72,10 @@ class LoginController extends Controller
             'apellido' => $apellido,
             'correo' => $correo,
             'telefono' => $telefono,
-            'contrasenia' => $contrasenia, 
-            'perfil_id' => 1, // cliente
-            'estado' => 1
+            'contrasenia' => $contrasenia,
+
+             'perfil_id' => 1, // cliente
+             'estado' =>1
         ]);
 
         return redirect()->back()

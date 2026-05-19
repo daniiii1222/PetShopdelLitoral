@@ -48,10 +48,10 @@
                             type="password"
                             class="form-control"
                             placeholder="********"
-                            name="password"
+                            name="contrasenia"
                             
                         >
-                         @error ('password')
+                         @error ('contrasenia')
                             <small class = "text-danger">
                                 {{$message}}
                             </small>

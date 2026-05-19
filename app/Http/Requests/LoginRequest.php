@@ -17,8 +17,8 @@ class LoginRequest extends FormRequest
     {
         return [
 
-            'email_login'=> 'required|email|max:150',
-            'password'=> 'required|string|max:200',
+            'required|email|max:150|exists:usuarios,correo',
+            'contrasenia'=> 'required|string|max:200',
         
         ];
 
@@ -29,8 +29,9 @@ class LoginRequest extends FormRequest
         return[
 
             'email_login.required'=> 'El email es obligatorio',
+            'email_login.exists' => 'El email no está registrado',
             'email_login.email'=> 'El email no es válido',
-            'password.required'=> 'La contraseña es obligatoria',
+            'contrasenia.required'=> 'La contraseña es obligatoria',
         ];
         
 
