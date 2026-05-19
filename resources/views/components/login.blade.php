@@ -33,7 +33,7 @@
                             class="form-control"
                             placeholder="ejemplo@mail.com"
                             name="email_login"
-                            
+                            id="email_login"
                         >
                          @error ('email_login')
                             <small class = "text-danger">
@@ -49,7 +49,7 @@
                             class="form-control"
                             placeholder="********"
                             name="contrasenia"
-                            
+                            id="contrasenia_login"
                         >
                          @error ('contrasenia')
                             <small class = "text-danger">
@@ -68,7 +68,9 @@
                             ¿Olvidaste tu contraseña?
                         </a>
                     </div>
-
+                     @error('login_error')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                     @enderror
                     <button type="submit" class="btn btn-dark w-100 rounded-pill">
                         Ingresar
                     </button>

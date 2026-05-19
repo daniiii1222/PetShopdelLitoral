@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         $credenciales = [
             'correo' => $datos['email_login'],
-            'contrasenia' => $datos['contrasenia']
+            'password' => $datos['contrasenia']
         ];
 
         if (Auth::attempt($credenciales)) {
@@ -41,10 +41,10 @@ class LoginController extends Controller
             $usuario = Auth::user();
 
             if ($usuario->perfil_id == 2) {
-                return redirect('/admin');
+                return redirect()->route('admin');
 
             } elseif ($usuario->perfil_id == 1) {
-                return redirect('/principal');
+                return redirect()->route('principal');
             }
 
             return redirect('/');

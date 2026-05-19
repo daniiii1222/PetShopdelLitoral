@@ -17,8 +17,8 @@ class LoginRequest extends FormRequest
     {
         return [
 
-            'required|email|max:150|exists:usuarios,correo',
-            'contrasenia'=> 'required|string|max:200',
+        'email_login' => 'required|email|max:150|exists:usuarios,correo',
+        'contrasenia' => 'required|string|max:200',
         
         ];
 
@@ -34,6 +34,11 @@ class LoginRequest extends FormRequest
             'contrasenia.required'=> 'La contraseña es obligatoria',
         ];
         
-
+    
+    }
+    
+    public function getAuthPassword()
+    {
+        return $this->contrasenia;
     }
 }
