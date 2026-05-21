@@ -23,7 +23,26 @@
 
     <body>
          <x-bannerSuperior/>
-        <x-navbar/>
+                @auth
+
+            {{-- ADMIN --}}
+            @if(Auth::user()->perfil_id == 2)
+
+                <x-navbar-admin />
+
+            {{-- CLIENTE --}}
+            @else
+
+                <x-navbar />
+
+            @endif
+
+        @else
+
+            {{-- INVITADO --}}
+            <x-navbar />
+
+            @endauth
         <x-login/>
         <main >
             {{ $slot }}

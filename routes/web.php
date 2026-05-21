@@ -52,4 +52,5 @@ Route::get('/formularioLogin', [LoginController::class, 'login'])->name('login')
  Route::post('/registro', [LoginController::class, 'procesarLogin']) ->name('registro.procesarLogin');
  Route::post('/procesarRegistro', [LoginController::class, 'procesarRegistro']) ->name('procesarRegistro.procesarRegistro');
     
-    
+Route::post('/logout', [LoginController::class, 'logout'])
+->name('logout');

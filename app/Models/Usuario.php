@@ -17,7 +17,12 @@ class Usuario extends Authenticatable
     protected $authPasswordName = 'contrasenia';
 
     protected $fillable = [
-        'nombreRegistro', 'apellido', 'correo',
-        'telefono', 'contrasenia', 'perfil_id', 'estado',
+        'nombreRegistro',
+        'apellido',
+        'correo',
+        'telefono', 
+        'contrasenia',
+        'perfil_id',
+        'estado',
     ];
 }

@@ -40,12 +40,51 @@
             </button>
           </form>
 
-          <!-- ICONOS -->
-          <div class="d-flex gap-3">
-            
-            <a href="#" onclick="inicioSesion(event)"> <img  src ="{{ asset('Imagenes/usuario.png') }}" ></a>
-            <i class="bi bi-cart fs-5"></i>
-          </div>
+                      <!-- ICONOS -->
+            <div class="d-flex gap-3 align-items-center">
+
+                @auth
+
+                    <span class="fw-bold">
+                        {{ Auth::user()->nombreRegistro }}
+                    </span>
+
+                    {{-- PERFIL --}}
+                    <a href="">
+                        <i class="bi bi-person fs-5"></i>
+                    </a>
+
+                    {{-- LOGOUT --}}
+                    <form action="{{ route('logout') }}" method="POST">
+
+                        @csrf
+
+                        <button class="btn btn-outline-danger btn-sm">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                        </button>
+
+                    </form>
+
+                @else
+
+                    {{-- INVITADO --}}
+                    <a href="#" onclick="inicioSesion(event)">
+
+                        <img src="{{ asset('Imagenes/usuario.png') }}">
+
+                    </a>
+
+                @endauth
+
+                {{-- CARRITO --}}
+                  <a href="" class="text-dark">
+                  <i class="bi bi-cart fs-5"></i>
+                  </a>
+
+            </div>
+
 
         </div>
     </div>
