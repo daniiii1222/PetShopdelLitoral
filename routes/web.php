@@ -54,3 +54,10 @@ Route::get('/formularioLogin', [LoginController::class, 'login'])->name('login')
     
 Route::post('/logout', [LoginController::class, 'logout'])
 ->name('logout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('admin.dashboard')->middleware('auth');
+
+Route::get('/productos/categoria/{id}',
+    [ProductoController::class, 'productosPorCategoria']);

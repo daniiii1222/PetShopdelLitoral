@@ -12,7 +12,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        //$productos= Producto:null();
+        $productos= Producto::with("categoria")=> get();
+        return view(" ",compact('productos'));
     }
 
     /**
@@ -20,7 +22,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias= Categoria::all();
+        return view(" ",compact('categorias'));
     }
 
     /**
@@ -28,7 +31,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rutaImagen= $request->file('imagen_producto')-> store('productos','public');
+        Producto:create({ 
+            'nombre_producto'=>$request->nombre,
+            'descripcion_producto'=>$request->descripcion,
+            'precio_producto'=>$request->precio,
+            'stock_producto'=>$request->stock,
+            'categoria_producto'=>$request->categoria_id,
+            'imagen_producto'=>$rutaImagen,
+        });
+        return redirect()->route
     }
 
     /**
@@ -62,4 +74,16 @@ class ProductoController extends Controller
     {
         //
     }
+
+    public function productosPorCategoria($id)
+{
+    $productos = Producto::with('categoria')
+                    ->where('categoria_id', $id)
+                    ->get();
+
+    $categorias = Categoria::all();
+
+    return view('productos', compact('productos', 'categorias'));
 }
+}
+
