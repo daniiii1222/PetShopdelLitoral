@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Usuario extends Authenticatable
 {
+    protected $table = 'usuarios';
     // Decirle a Laravel cuál es el campo de email y contraseña
     protected $primaryKey = 'id';
     
@@ -14,7 +15,8 @@ class Usuario extends Authenticatable
     public function getAuthPassword()       { return $this->contrasenia; }
 
     // También necesitás esto para que Auth sepa qué columna usar
-    protected $authPasswordName = 'contrasenia';
+   
+    
 
     protected $fillable = [
         'nombreRegistro',

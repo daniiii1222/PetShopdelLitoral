@@ -21,20 +21,18 @@ class LoginController extends Controller
     {
         $datos = $request->validated();
 
-        $credenciales = [
-            'correo' => $datos['email_login'],
-            'password' => $datos['contrasenia']
-        ];
+        $usuario = Usuario::where('correo', $datos['email_login'])->first();
 
-        if (Auth::attempt($credenciales)) {
+        if ($usuario && Hash::check($datos['contrasenia'], $usuario->contrasenia)) {
+
+            Auth::login($usuario);
 
             $request->session()->regenerate();
 
-            $usuario = Auth::user();
-
             // ADMIN
-           if ($usuario->perfil_id == 2) {
-                return redirect()->route('admin.dashboard');
+            if ($usuario->perfil_id == 2) {
+
+                return redirect()->route('dashboard');
             }
 
             // CLIENTE

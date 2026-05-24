@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\ControladorPrincipal;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductoController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,23 @@ Route::get('/formularioLogin', [LoginController::class, 'login'])->name('login')
 Route::post('/logout', [LoginController::class, 'logout'])
 ->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('admin.dashboard')->middleware('auth');
 
-Route::get('/productos/categoria/{id}',
-    [ProductoController::class, 'productosPorCategoria']);
+Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])->name('dashboard');
+
+//Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])
+   // ->middleware('auth')
+   //->name('dashboard');
+
+Route::get('/productos/categoria/{id}',[ProductoController::class, 'productosPorCategoria']);
+
+Route::get('/productos', [ProductoController::class, 'index'])
+    ->name('productos.index');
+
+Route::get('/productos/create', [ProductoController::class, 'create'])
+    ->name('productos.create');
+
+Route::post('/productos/store', [ProductoController::class, 'store'])
+    ->name('productos.store');
+
+Route::get('/productos', [ProductoController::class, 'index'])
+    ->name('productos.index');

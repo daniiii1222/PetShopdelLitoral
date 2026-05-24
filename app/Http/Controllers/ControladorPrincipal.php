@@ -36,4 +36,9 @@ class ControladorPrincipal extends Controller
     {
         return view('comercializacion');
     }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
 }

@@ -1,6 +1,6 @@
-<x-layout>
+<x-layout-admin>
     <x-slot name="title">Panel Admin</x-slot>
 
-    <h1>Bienvenido, {{ Auth::user()->nombreRegistro }}</h1>
+    <h1>Bienvenido</h1>
     {{-- contenido del dashboard --}}
-</x-layout>
+</x-layout-admin>

@@ -3,7 +3,7 @@
     <div class="container">
 
         <!-- LOGO -->
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ route('dashboard') }}">
             <img src="{{ asset('Imagenes/LogoPetShop.jpg') }}"
                  alt="Logo PetShop"
                  width="200"
@@ -99,30 +99,7 @@
 
             </ul>
 
-            <!-- ICONOS -->
-            <div class="d-flex align-items-center gap-3">
-
-                {{-- Nombre admin --}}
-                <span class="fw-bold">
-                    {{ Auth::user()->nombreRegistro }}
-                </span>
-
-                {{-- Logout --}}
-                <form action="{{ route('logout') }}"
-                      method="POST">
-
-                    @csrf
-
-                    <button type="submit"
-                            class="btn btn-outline-danger">
-
-                        <i class="bi bi-box-arrow-right"></i>
-
-                    </button>
-
-                </form>
-
-            </div>
+           
 
         </div>
 
