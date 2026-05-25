@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\TipoAlimento;
 use Illuminate\Http\Request;
+
 
 class ProductoController extends Controller
 {
@@ -14,8 +16,9 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::with('categoria')->get();
+        $categorias = Categoria::all();
 
-        return view('indexProductos', compact('productos'));
+        return view('productos', compact('productos', 'categorias'));
     }
 
     /**
@@ -25,7 +28,12 @@ class ProductoController extends Controller
     {
     $categorias = Categoria::all();
 
-    return view('registroProductos', compact('categorias'));
+    $tiposAlimentos = TipoAlimento::where('activo', true)->get();
+
+    return view('registroProductos', compact(
+        'categorias',
+        'tiposAlimentos'
+    ));
     }
 
     /**
@@ -43,6 +51,10 @@ class ProductoController extends Controller
             'precio_producto' => $request->precio,
             'stock_producto' => $request->stock,
             'categoria_id' => $request->categoria,
+            'tipoAlimento_id' => 
+            $request->categoria == 1
+            ? $request->tipoAlimento
+            : null,
             'imagen_producto' => $rutaImagen,
             'activo' => true,
         ]);
@@ -60,6 +72,7 @@ class ProductoController extends Controller
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'categoria' => 'required|exists:categorias,id',
+            'tipoAlimento' => 'nullable|exists:tipoAlimentos,id',
             'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
     }
@@ -115,14 +128,35 @@ class ProductoController extends Controller
         //
     }
 
+   use App\Models\TipoAlimento;
+
     public function productosPorCategoria($id)
     {
-        $productos = Producto::with('categoria')
-            ->where('categoria_id', $id)
-            ->get();
+        $categoria = Categoria::findOrFail($id);
+
+        $query = Producto::with('categoria')
+            ->where('categoria_id', $id);
+
+        // FILTRO POR TIPO DE ALIMENTO
+        if(request()->has('tipo')) {
+            $query->where('tipoAlimento_id', request('tipo'));
+        }
+
+        $productos = $query->get();
 
         $categorias = Categoria::all();
 
-        return view('productos.index', compact('productos', 'categorias'));
+        // SUBCATEGORIAS
+        $tiposAlimentos = TipoAlimento::where('categoria_id', $id)
+            ->where('activo', true)
+            ->get();
+
+        return view('productos', compact(
+            'productos',
+            'categorias',
+            'categoria',
+            'tiposAlimentos'
+        ));
     }
+    
 }

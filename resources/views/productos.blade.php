@@ -8,19 +8,15 @@
         <!-- FILTROS -->
         <div class="text-center mb-4">
 
-            <a href="{{ url('/productos') }}" class="btn btn-custom">
+            <a href="{{ route('productos.index') }}" class="btn btn-custom">
                 Todos
             </a>
 
             @foreach($categorias as $categoria)
-
-                <a href="{{ url('/productos/categoria/'.$categoria->id) }}"
+                <a href="{{ route('productos.categoria', $categoria->id) }}"
                    class="btn btn-custom">
-
-                    {{ $categoria->nombre }}
-
+                    {{ $categoria->nombre_categoria }}
                 </a>
-
             @endforeach
 
         </div>
@@ -41,27 +37,27 @@
                             @foreach($grupo as $producto)
 
                                 <div class="col-md-3">
-
                                     <div class="card h-100">
 
-                                        <img src="{{ asset('storage/'.$producto->imagen) }}"
+                                        {{-- ✅ Nombre de campo corregido: imagen_producto --}}
+                                        <img src="{{ asset('storage/' . $producto->imagen_producto) }}"
                                              class="card-img-top"
-                                             alt="{{ $producto->nombre }}">
+                                             alt="{{ $producto->nombre_producto }}">
 
                                         <div class="card-body text-center">
 
-                                            <h6>{{ $producto->nombre }}</h6>
+                                            {{-- ✅ Nombre de campo corregido: nombre_producto --}}
+                                            <h6>{{ $producto->nombre_producto }}</h6>
 
-                                            <p>${{ $producto->precio }}</p>
+                                            {{-- ✅ Nombre de campo corregido: precio_producto --}}
+                                            <p>${{ $producto->precio_producto }}</p>
 
                                             <small>
                                                 {{ $producto->categoria->nombre }}
                                             </small>
 
                                         </div>
-
                                     </div>
-
                                 </div>
 
                             @endforeach
@@ -75,23 +71,18 @@
             </div>
 
             <!-- CONTROLES -->
-
             <button class="carousel-control-prev"
                     type="button"
                     data-bs-target="#carouselProductos"
                     data-bs-slide="prev">
-
                 <span class="carousel-control-prev-icon"></span>
-
             </button>
 
             <button class="carousel-control-next"
                     type="button"
                     data-bs-target="#carouselProductos"
                     data-bs-slide="next">
-
                 <span class="carousel-control-next-icon"></span>
-
             </button>
 
         </div>

@@ -12,8 +12,10 @@ class Producto extends Model
         'precio_producto',
         'stock_producto',
         'categoria_id',
+        'tipoAlimento_id'
         'imagen_producto',
         'activo',
+        
     ];
 
     protected $casts = [
@@ -25,5 +27,10 @@ class Producto extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
+    }
+
+     public function tipoAlimento()
+    {
+        return $this->belongsTo(TipoAlimento::class);
     }
 }

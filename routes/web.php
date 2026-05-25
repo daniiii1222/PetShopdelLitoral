@@ -62,9 +62,9 @@ Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])->name('dash
 //Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])
    // ->middleware('auth')
    //->name('dashboard');
-
-Route::get('/productos/categoria/{id}',[ProductoController::class, 'productosPorCategoria']);
-
+   
+Route::get('/productos/categoria/{id}', [ProductoController::class, 'productosPorCategoria'])
+    ->name('productos.categoria');
 Route::get('/productos', [ProductoController::class, 'index'])
     ->name('productos.index');
 
@@ -73,6 +73,3 @@ Route::get('/productos/create', [ProductoController::class, 'create'])
 
 Route::post('/productos/store', [ProductoController::class, 'store'])
     ->name('productos.store');
-
-Route::get('/productos', [ProductoController::class, 'index'])
-    ->name('productos.index');
