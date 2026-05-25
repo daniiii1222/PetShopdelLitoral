@@ -12,7 +12,7 @@ class Producto extends Model
         'precio_producto',
         'stock_producto',
         'categoria_id',
-        'tipoAlimento_id'
+        'tipoAlimento_id',
         'imagen_producto',
         'activo',
         

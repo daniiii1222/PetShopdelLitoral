@@ -15,10 +15,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::with('categoria')->get();
-        $categorias = Categoria::all();
+    $productos = Producto::with('categoria')->get();
+    $categorias = Categoria::all();
+    $tiposAlimentos = collect(); // colección vacía, no rompe el @isset
 
-        return view('productos', compact('productos', 'categorias'));
+    return view('productos', compact('productos', 'categorias', 'tiposAlimentos'));
     }
 
     /**
@@ -128,7 +129,6 @@ class ProductoController extends Controller
         //
     }
 
-   use App\Models\TipoAlimento;
 
     public function productosPorCategoria($id)
     {

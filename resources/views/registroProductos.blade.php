@@ -128,6 +128,42 @@
                             @enderror
                         </div>
 
+                        <!-- Tipo de alimento -->
+                <div class="mb-3 d-none" id="contenedorTipoAlimento">
+
+                    <label for="tipoAlimento" class="form-label">
+                        Tipo de alimento
+                    </label>
+
+                    <select name="tipoAlimento"
+                            id="tipoAlimento"
+                            class="form-select @error('tipoAlimento') is-invalid @enderror">
+
+                        <option value="">
+                            Seleccione un tipo
+                        </option>
+
+                        @foreach($tiposAlimentos as $tipo)
+
+                            <option value="{{ $tipo->id }}"
+                                {{ old('tipoAlimento') == $tipo->id ? 'selected' : '' }}>
+
+                                {{ $tipo->nombreAnimal }}
+
+                            </option>
+
+                        @endforeach
+
+                    </select>
+
+                    @error('tipoAlimento')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
                         <!-- Imagen -->
                         <div class="mb-3">
                             <label for="imagen" class="form-label">
@@ -176,4 +212,37 @@
     </div>
 
 </div>
+
+    <script>
+
+        const categoria = document.getElementById('categoria');
+
+        const contenedorTipo =
+            document.getElementById('contenedorTipoAlimento');
+
+        function mostrarTipoAlimento() {
+
+            const textoSeleccionado =
+                categoria.options[categoria.selectedIndex].text;
+
+            // Mostrar SOLO si la categoría es Alimentos
+            if(textoSeleccionado.trim() === 'Alimentos') {
+
+                contenedorTipo.classList.remove('d-none');
+
+            } else {
+
+                contenedorTipo.classList.add('d-none');
+
+            }
+        }
+
+        // Cuando cambia
+        categoria.addEventListener('change', mostrarTipoAlimento);
+
+        // Cuando recarga con errores
+        mostrarTipoAlimento();
+
+    </script>
+
 </x-layout-admin>

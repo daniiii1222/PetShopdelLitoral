@@ -30,10 +30,13 @@ return new class extends Migration
             ->onDelete('cascade');
 
         // SUBCATEGORIA ALIMENTO
-        $table->foreignId('tipoAlimento_id')
-            ->nullable()
-            ->constrained('tipoAlimentos')
-            ->nullOnDelete();
+        $table->unsignedBigInteger('tipoAlimento_id')
+       ->nullable();
+
+        $table->foreign('tipoAlimento_id')
+       ->references('id')
+       ->on('tipoAlimentos')
+       ->onDelete('set null');
 
         // BAJA LOGICA
         $table->boolean('activo')->default(true);

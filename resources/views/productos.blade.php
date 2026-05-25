@@ -1,90 +1,76 @@
-<x-layout title="Productos">
+<x-layout :title="isset($categoria) ? $categoria->nombre_categoria : 'Productos'">
 
 <div class="paginaProductos">
     <div class="container mt-4 mb-4">
 
-        <h2 class="text-center mb-4">Productos</h2>
+        <h2 class="text-center mb-4">
+            {{ isset($categoria) ? $categoria->nombre_categoria : 'Productos' }}
+        </h2>
 
-        <!-- FILTROS -->
+        <!-- FILTROS DE CATEGORÍA -->
         <div class="text-center mb-4">
+            <a href="{{ route('productos.index') }}" class="btn btn-custom">Todos</a>
 
-            <a href="{{ route('productos.index') }}" class="btn btn-custom">
-                Todos
-            </a>
-
-            @foreach($categorias as $categoria)
-                <a href="{{ route('productos.categoria', $categoria->id) }}"
-                   class="btn btn-custom">
-                    {{ $categoria->nombre_categoria }}
+            @foreach($categorias as $cat)
+                <a href="{{ route('productos.categoria', $cat->id) }}" class="btn btn-custom">
+                    {{ $cat->nombre_categoria }}
                 </a>
             @endforeach
-
         </div>
 
-        <!-- CARRUSEL -->
-        <div id="carouselProductos"
-             class="carousel slide"
-             data-bs-ride="carousel">
+        {{-- SUBCATEGORIAS DE ALIMENTOS --}}
+        @isset($categoria)
+            @if($categoria->id == 1 && $tiposAlimentos->isNotEmpty())
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    @foreach($tiposAlimentos as $tipo)
+                        <a href="{{ route('productos.categoria', [
+                                'id' => $categoria->id,
+                                'tipo' => $tipo->id
+                            ]) }}"
+                            class="btn {{ request('tipo') == $tipo->id ? 'btn-dark' : 'btn-outline-dark' }}">
+                            {{ $tipo->nombreAnimal }}
+                        </a>
+                    @endforeach
+                </div>
+            @endif
+        @endisset
 
+        <!-- CARRUSEL -->
+        <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
                 @foreach($productos->chunk(3) as $index => $grupo)
-
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-
                         <div class="row justify-content-center mt-4 mb-4">
 
                             @foreach($grupo as $producto)
-
                                 <div class="col-md-3">
                                     <div class="card h-100">
-
-                                        {{-- ✅ Nombre de campo corregido: imagen_producto --}}
                                         <img src="{{ asset('storage/' . $producto->imagen_producto) }}"
                                              class="card-img-top"
                                              alt="{{ $producto->nombre_producto }}">
-
                                         <div class="card-body text-center">
-
-                                            {{-- ✅ Nombre de campo corregido: nombre_producto --}}
                                             <h6>{{ $producto->nombre_producto }}</h6>
-
-                                            {{-- ✅ Nombre de campo corregido: precio_producto --}}
                                             <p>${{ $producto->precio_producto }}</p>
-
-                                            <small>
-                                                {{ $producto->categoria->nombre }}
-                                            </small>
-
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
 
                         </div>
-
                     </div>
-
                 @endforeach
 
             </div>
 
-            <!-- CONTROLES -->
-            <button class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselProductos"
-                    data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselProductos" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-
-            <button class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselProductos"
-                    data-bs-slide="next">
+            <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselProductos" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
-
         </div>
 
     </div>
