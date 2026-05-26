@@ -4,6 +4,8 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\ControladorPrincipal;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\AdminController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -27,8 +29,9 @@ Route::post('/logout', [LoginController::class, 'logout'])
 ->name('logout');
 
 
-Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])->name('dashboard');
-
+//Route::get('/dashboard', [ControladorPrincipal::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [AdminController::class, 'dashboard'])
+    ->name('dashboard');
 
 Route::get('/productos', [ProductoController::class, 'index'])
     ->name('productos.index');
