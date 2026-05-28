@@ -13,13 +13,17 @@ class Venta extends Model
 
         'usuario_id',
         'total',
-        'estado'
+        'estado', 
+        'fecha',
     ];
 
-    
+    protected $cast = [
+        'fecha' => 'datetime', 
+    ];
+
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class, 'usuario_id');
     }
 
     public function detalles()

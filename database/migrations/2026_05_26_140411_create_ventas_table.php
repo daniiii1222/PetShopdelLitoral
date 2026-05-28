@@ -20,12 +20,16 @@ return new class extends Migration
                   ->constrained('usuarios')
                   ->onDelete('cascade');
 
-            $table->decimal('total', 10, 2);
+            $table->decimal('total', 10, 2) 
+                  -> default (0);
 
             $table->string('estado')
                   ->default('pendiente');
 
+            $table->timestamp('fecha') 
+                  ->nullable();
             $table->timestamps();
+
         });
     }
 

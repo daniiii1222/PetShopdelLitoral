@@ -50,8 +50,46 @@
                                              class="card-img-top"
                                              alt="{{ $producto->nombre_producto }}">
                                         <div class="card-body text-center">
-                                            <h6>{{ $producto->nombre_producto }}</h6>
-                                            <p>${{ $producto->precio_producto }}</p>
+                                            <h6>
+                                                {{ $producto->nombre_producto }}
+                                            </h6>
+
+                                            <p class="fw-bold">
+                                                ${{ $producto->precio_producto }}
+                                            </p>
+
+                                            <form action="{{ route('ventas.store') }}"
+                                                method="POST">
+
+                                                @csrf
+
+                                               
+                                                <input type="hidden"
+                                                    name="producto_id"
+                                                    value="{{ $producto->id }}">
+
+                                               
+                                                <input type="hidden"
+                                                    name="total"
+                                                    value="{{ $producto->precio_producto }}">
+
+                                              
+                                                <input type="hidden"
+                                                    name="cantidad"
+                                                    value="1">
+
+                                                
+                                                <button type="submit"
+                                                        class="btn btn-success w-100">
+
+                                                    <i class="bi bi-cart-plus"></i>
+
+                                                    Comprar
+
+                                                </button>
+
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>

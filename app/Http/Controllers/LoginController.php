@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        return view('formularioLogin');
+        return view('vistaLogin');
     }
 
     public function procesarLogin(LoginRequest $request)
@@ -55,7 +55,7 @@ class LoginController extends Controller
             'correo' => $datos['correo'],
             'telefono' => $datos['telefono'],
             'contrasenia' => Hash::make($datos['contrasenia']),
-            'perfil_id' => 2,
+            'perfil_id' => 1,
             'estado' => 1
         ]);
 

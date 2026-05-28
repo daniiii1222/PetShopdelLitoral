@@ -5,7 +5,7 @@ use App\Http\Controllers\ControladorPrincipal;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\VentaController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -41,3 +41,10 @@ Route::get('/productos/create', [ProductoController::class, 'create'])
     ->name('productos.create');
 Route::post('/productos/store', [ProductoController::class, 'store'])
     ->name('productos.store');
+
+/*Route::middleware('auth')->group(function () {
+
+Route::resource('ventas', VentaController::class);
+
+}); */
+Route::resource('ventas', VentaController::class);

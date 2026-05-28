@@ -19,7 +19,7 @@ class VentaController extends Controller
                         ->latest()
                         ->get();
 
-        return view('vistaVentasRealizadas.index', compact('ventas'));
+        return view('ventas.index', compact('ventas'));
     }
 
     /**
@@ -31,7 +31,7 @@ class VentaController extends Controller
         $productos = Producto::all();
 
         
-        return view('vistaventasRealizadas.create', compact('productos'));
+        return view('ventas.create', compact('productos'));
     }
 
     /**
@@ -39,23 +39,27 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
+       
         $request->validate([
 
             'total' => 'required|numeric'
         ]);
-
+        
         $venta = Venta::create([
 
            
-            'usuario_id' => Auth::id(),
+            'usuario_id' => 1,
 
             'total' => $request->total,
 
             'estado' => 'completada',
+
+            'fecha' => now(),
+
         ]);
 
         return redirect()
-                ->route('vistaVentasRealizadas.index')
+                ->route('ventas.index')
                 ->with('mensaje', 'Venta registrada correctamente');
     }
 
