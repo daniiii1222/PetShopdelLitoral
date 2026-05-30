@@ -19,9 +19,12 @@ class LoginController extends Controller
 
     public function procesarLogin(LoginRequest $request)
     {
+
+         
         $datos = $request->validated();
 
         $usuario = Usuario::where('correo', $datos['email_login'])->first();
+
 
         if ($usuario && Hash::check($datos['contrasenia'], $usuario->contrasenia)) {
 

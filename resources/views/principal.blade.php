@@ -1,8 +1,9 @@
 
-          
+
 
 <x-layout title="Home">
 <div class="pagina-contacto">
+  
     <!--Carusel -->
     <div class="container-fluid mb-3" > 
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">

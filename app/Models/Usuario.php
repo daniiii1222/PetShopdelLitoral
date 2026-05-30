@@ -11,12 +11,10 @@ class Usuario extends Authenticatable
     // Decirle a Laravel cuál es el campo de email y contraseña
     protected $primaryKey = 'id';
     
-    public function getAuthIdentifierName() { return 'correo'; }
-    public function getAuthPassword()       { return $this->contrasenia; }
-
-    // También necesitás esto para que Auth sepa qué columna usar
-   
-    
+    public function getAuthPassword()
+    {
+    return $this->contrasenia;
+    }
 
     protected $fillable = [
         'nombreRegistro',

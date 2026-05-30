@@ -6,35 +6,52 @@ use App\Models\Producto;
 use App\Models\Categoria;
 use App\Models\TipoAlimento;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
+ 
+
     public function index()
     {
-    $productos = Producto::with('categoria')->get();
-    $categorias = Categoria::all();
-    $tiposAlimentos = collect(); // colección vacía, no rompe el @isset
+        if (Auth::user()->perfil_id != 2) {
 
-    return view('productos', compact('productos', 'categorias', 'tiposAlimentos'));
+            $productos = Producto::where('activo', true)
+                                ->with('categoria')
+                                ->get();
+
+            $categorias = Categoria::all();
+
+            $tiposAlimentos = collect();
+
+            return view('productos', compact(
+                'productos',
+                'categorias',
+                'tiposAlimentos'
+            ));
+        }
+
+        // ADMIN VE TODOS
+        $productos = Producto::with('categoria')->get();
+
+        return view('vistaGestionProductos', compact('productos'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-    $categorias = Categoria::all();
+        $categorias = Categoria::all();
 
-    $tiposAlimentos = TipoAlimento::where('activo', true)->get();
+        $tiposAlimentos = TipoAlimento::where('activo', true)->get();
 
-    return view('registroProductos', compact(
-        'categorias',
-        'tiposAlimentos'
-    ));
+        return view('registroProductos', compact(
+            'categorias',
+            'tiposAlimentos'
+        ));
     }
 
     /**
@@ -105,28 +122,87 @@ class ProductoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Producto $producto)
+    public function edit($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+
+        $categorias = Categoria::all();
+
+        $tiposAlimentos = TipoAlimento::where('activo', true)->get();
+
+        return view('modificarProducto', compact(
+            'producto',
+            'categorias',
+            'tiposAlimentos'
+        ));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Producto $producto)
+   public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Producto $producto)
+            'nombre' => 'required|string|max:100',
+
+            'descripcion' => 'required|string|max:255',
+
+            'precio' => 'required|numeric|min:0',
+
+            'stock' => 'required|integer|min:0',
+
+            'categoria' => 'required|exists:categorias,id',
+
+            'tipoAlimento' => 'nullable|exists:tipoAlimentos,id',
+
+            // IMPORTANTE:
+            // nullable porque estamos modificando
+            'imagen' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
+
+        $producto = Producto::findOrFail($id);
+
+        // Si seleccionó una nueva imagen
+        if ($request->hasFile('imagen')) {
+
+            $rutaImagen = $request->file('imagen')
+                                ->store('productos', 'public');
+
+            $producto->imagen_producto = $rutaImagen;
+        }
+
+        $producto->nombre_producto = $request->nombre;
+
+        $producto->descripcion_producto = $request->descripcion;
+
+        $producto->precio_producto = $request->precio;
+
+        $producto->stock_producto = $request->stock;
+
+        $producto->categoria_id = $request->categoria;
+
+        $producto->tipoAlimento_id =
+            $request->categoria == 1
+                ? $request->tipoAlimento
+                : null;
+
+        $producto->save();
+
+        return redirect()
+            ->route('productos.index')
+            ->with('success_message', 'Producto modificado correctamente');
+}
+        
+
+    public function destroy($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+
+        $producto->activo = false;
+
+        $producto->save();
+
+        return redirect()
+            ->route('productos.index')
+            ->with('success_message', 'Producto dado de baja correctamente');
     }
 
 
@@ -134,8 +210,9 @@ class ProductoController extends Controller
     {
         $categoria = Categoria::findOrFail($id);
 
-        $query = Producto::with('categoria')
-            ->where('categoria_id', $id);
+       $query = Producto::with('categoria')
+        ->where('categoria_id', $id)
+        ->where('activo', true);
 
         // FILTRO POR TIPO DE ALIMENTO
         if(request()->has('tipo')) {

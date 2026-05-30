@@ -13,15 +13,18 @@ class VentaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+   public function index()
     {
-        $ventas = Venta::with('usuario')
-                        ->latest()
-                        ->get();
-
-        return view('ventas.index', compact('ventas'));
+    if (Auth::user()->perfil_id != 2) {
+        return redirect()->route('principal');
     }
 
+    $ventas = Venta::with('usuario')
+                   ->latest()
+                   ->get();
+
+    return view('vistaVenta', compact('ventas'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -39,7 +42,6 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-       
         $request->validate([
 
             'total' => 'required|numeric'
@@ -48,7 +50,7 @@ class VentaController extends Controller
         $venta = Venta::create([
 
            
-            'usuario_id' => 1,
+            'usuario_id' => Auth::id(),
 
             'total' => $request->total,
 
@@ -83,7 +85,7 @@ class VentaController extends Controller
      */
     public function edit(Venta $venta)
     {
-        //
+        
     }
 
     /**

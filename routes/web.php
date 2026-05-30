@@ -33,18 +33,9 @@ Route::post('/logout', [LoginController::class, 'logout'])
 Route::get('dashboard', [AdminController::class, 'dashboard'])
     ->name('dashboard');
 
-Route::get('/productos', [ProductoController::class, 'index'])
-    ->name('productos.index');
-Route::get('/productos/categoria/{id}', [ProductoController::class, 'productosPorCategoria'])
-    ->name('productos.categoria');
-Route::get('/productos/create', [ProductoController::class, 'create'])
-    ->name('productos.create');
-Route::post('/productos/store', [ProductoController::class, 'store'])
-    ->name('productos.store');
-
-/*Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
 
 Route::resource('ventas', VentaController::class);
+}); 
 
-}); */
-Route::resource('ventas', VentaController::class);
+Route::resource('productos', ProductoController::class);

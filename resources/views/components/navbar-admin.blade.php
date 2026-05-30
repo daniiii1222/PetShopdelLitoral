@@ -34,44 +34,14 @@
                     </a>
                 </li>
 
-                <li class="nav-item dropdown">
-
-                    <a class="nav-link dropdown-toggle"
-                       href="#"
-                       data-bs-toggle="dropdown">
+                <li class="nav-item texto">
+                    <a class="nav-link"
+                       href="{{ url('/gestionar-producto') }}">
 
                         Gestionar Productos
                     </a>
-
-                    <ul class="dropdown-menu">
-
-                        <li>
-                            <a class="dropdown-item"
-                               href="{{ url('/agregar-producto') }}">
-
-                                Agregar Producto
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item"
-                               href="{{ url('/modificar-producto') }}">
-
-                                Modificar Producto
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item"
-                               href="{{ url('/eliminar-producto') }}">
-
-                                Eliminar Producto
-                            </a>
-                        </li>
-
-                    </ul>
-
                 </li>
+
 
                 <li class="nav-item texto">
                     <a class="nav-link"
@@ -99,7 +69,40 @@
 
             </ul>
 
-           
+            @auth
+
+                    <span class="fw-bold">
+                        {{ Auth::user()->nombreRegistro }}
+                    </span>
+
+                    {{-- PERFIL --}}
+                    <a href="">
+                        <i class="bi bi-person fs-5"></i>
+                    </a>
+
+                    {{-- LOGOUT --}}
+                    <form action="{{ route('logout') }}" method="POST">
+
+                        @csrf
+
+                        <button class="btn btn-outline-danger btn-sm">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                        </button>
+
+                    </form>
+
+                @else
+
+                    {{-- INVITADO --}}
+                    <a href="#" onclick="inicioSesion(event)">
+
+                        <img src="{{ asset('Imagenes/usuario.png') }}">
+
+                    </a>
+
+                @endauth
 
         </div>
 
