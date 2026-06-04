@@ -15,7 +15,7 @@ class ProductoController extends Controller
 
     public function index()
     {
-        if (Auth::user()->perfil_id != 2) {
+        if (!Auth::check() || Auth::user()->perfil_id != 2) {
 
             $productos = Producto::where('activo', true)
                                 ->with('categoria')
@@ -32,7 +32,6 @@ class ProductoController extends Controller
             ));
         }
 
-        // ADMIN VE TODOS
         $productos = Producto::with('categoria')->get();
 
         return view('vistaGestionProductos', compact('productos'));
@@ -189,7 +188,7 @@ class ProductoController extends Controller
         return redirect()
             ->route('productos.index')
             ->with('success_message', 'Producto modificado correctamente');
-}
+    }
         
 
     public function destroy($id)
@@ -206,27 +205,24 @@ class ProductoController extends Controller
     }
 
 
-    public function productosPorCategoria($id)
+    public function productosPorCategoria($id, Request $request)
     {
         $categoria = Categoria::findOrFail($id);
 
-       $query = Producto::with('categoria')
-        ->where('categoria_id', $id)
-        ->where('activo', true);
+        $query = Producto::with('categoria')
+                        ->where('categoria_id', $id)
+                        ->where('activo', true);
 
-        // FILTRO POR TIPO DE ALIMENTO
-        if(request()->has('tipo')) {
-            $query->where('tipoAlimento_id', request('tipo'));
+        if ($request->filled('tipo')) {
+            $query->where('tipoAlimento_id', $request->tipo);
         }
 
         $productos = $query->get();
 
         $categorias = Categoria::all();
 
-        // SUBCATEGORIAS
-        $tiposAlimentos = TipoAlimento::where('categoria_id', $id)
-            ->where('activo', true)
-            ->get();
+        $tiposAlimentos = TipoAlimento::where('activo', true)
+                                    ->get();
 
         return view('productos', compact(
             'productos',

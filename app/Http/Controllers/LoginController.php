@@ -58,7 +58,7 @@ class LoginController extends Controller
             'correo' => $datos['correo'],
             'telefono' => $datos['telefono'],
             'contrasenia' => Hash::make($datos['contrasenia']),
-            'perfil_id' => 1,
+            'perfil_id' => 2,
             'estado' => 1
         ]);
 

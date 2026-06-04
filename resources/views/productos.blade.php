@@ -12,7 +12,7 @@
             <a href="{{ route('productos.index') }}" class="btn btn-custom">Todos</a>
 
             @foreach($categorias as $cat)
-                <a href="{{ route('productos.categoria', $cat->id) }}" class="btn btn-custom">
+                <a href="{{ route('productos.productosPorCategoria', $cat->id) }}" class="btn btn-custom">
                     {{ $cat->nombre_categoria }}
                 </a>
             @endforeach
@@ -23,7 +23,7 @@
             @if($categoria->id == 1 && $tiposAlimentos->isNotEmpty())
                 <div class="d-flex justify-content-center gap-3 mb-4">
                     @foreach($tiposAlimentos as $tipo)
-                        <a href="{{ route('productos.categoria', [
+                        <a href="{{ route('productos.productosPorCategoria', [
                                 'id' => $categoria->id,
                                 'tipo' => $tipo->id
                             ]) }}"
@@ -58,7 +58,7 @@
                                                 ${{ $producto->precio_producto }}
                                             </p>
 
-                                            <form action="{{ route('ventas.store') }}"
+                                            <form action="{{ route('carrito.store') }}"
                                                 method="POST">
 
                                                 @csrf
@@ -68,12 +68,6 @@
                                                     name="producto_id"
                                                     value="{{ $producto->id }}">
 
-                                               
-                                                <input type="hidden"
-                                                    name="total"
-                                                    value="{{ $producto->precio_producto }}">
-
-                                              
                                                 <input type="hidden"
                                                     name="cantidad"
                                                     value="1">
@@ -84,7 +78,7 @@
 
                                                     <i class="bi bi-cart-plus"></i>
 
-                                                    Comprar
+                                                    Agregar al carrito
 
                                                 </button>
 
