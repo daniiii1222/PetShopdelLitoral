@@ -79,7 +79,8 @@
                 @endauth
 
                 {{-- CARRITO --}}
-                 <x-carrito/>
+               
+                <x-carrito/>
 
             </div>
 
