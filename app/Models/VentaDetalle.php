@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class VentaDetalle extends Model
 {
     protected $table = 'ventas_detalle';
-    protected $fillable = {
-        'venta_id', 'producto_id', 'cantidad', 'precio_unitario', 'subtotal',
+    protected $fillable = [
+        'venta_id', 'producto_id', 'cantidad', 'precio_unitario', 'subtotal'
 
-    }
+    ];
     
     public function venta(){
-        return $this_belongsTo(Producto:class,'producto_id');
+        return $this->belongsTo(Producto::class,'producto_id');
     }
 }

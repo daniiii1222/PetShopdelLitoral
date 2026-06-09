@@ -17,7 +17,7 @@ class Venta extends Model
         'fecha',
     ];
 
-    protected $cast = [
+    protected $casts = [
         'fecha' => 'datetime', 
     ];
 
@@ -28,6 +28,6 @@ class Venta extends Model
 
     public function detalles()
     {
-        //return $this->hasMany(DetalleVenta::class);
+        return $this->hasMany(DetalleVenta::class);
     }
 }
