@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\CarritoController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,19 @@ Route::get('dashboard', [AdminController::class, 'dashboard'])
 Route::middleware('auth')->group(function () {
 
 Route::resource('ventas', VentaController::class);
+
+Route::resource('carrito', CarritoController::class);
+
+    Route::post(
+        '/carrito/confirmar',
+        [CarritoController::class, 'confirmar']
+    )->name('carrito.confirmar');
+
 }); 
 
 Route::resource('productos', ProductoController::class);
+
+Route::get(
+    '/productos/categoria/{id}',
+    [ProductoController::class, 'productosPorCategoria']
+)->name('productos.productosPorCategoria');

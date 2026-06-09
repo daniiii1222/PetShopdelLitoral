@@ -79,13 +79,13 @@
                 @endauth
 
                 {{-- CARRITO --}}
-                  <a href="" class="text-dark">
-                  <i class="bi bi-cart fs-5"></i>
-                  </a>
+               
+                <x-carrito/>
 
             </div>
 
 
         </div>
     </div>
+
 </nav>

@@ -13,6 +13,10 @@ class VentaDetalle extends Model
     ];
     
     public function venta(){
+        return $this->belongsTo(venta::class,'venta_id');
+    }
+
+    public function producto(){
         return $this->belongsTo(Producto::class,'producto_id');
     }
 }
