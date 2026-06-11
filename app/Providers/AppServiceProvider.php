@@ -35,13 +35,19 @@ class AppServiceProvider extends ServiceProvider
                     ? $carrito->detalles
                     : collect();
 
+                    $cantidadCarrito = $carrito        
+                    ? $carrito->detalles->sum('cantidad')
+                    : 0;
+
                 $view->with('carrito', $carrito);
                 $view->with('items', $items);
+                 $view->with('cantidadCarrito', $cantidadCarrito);
 
             } else {
 
                 $view->with('carrito', null);
                 $view->with('items', collect());
+                 $view->with('cantidadCarrito', 0);
             }
         });
     }

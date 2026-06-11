@@ -79,9 +79,21 @@
                 @endauth
 
                 {{-- CARRITO --}}
-               
-                <x-carrito/>
 
+            <button class="btn btn-outline-light position-relative"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#carritoCanvas"
+                    aria-controls="carritoCanvas">
+
+                    🛒
+
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ $cantidadCarrito ?? 0 }}
+                    </span>
+
+            </button>
+   
             </div>
 
 

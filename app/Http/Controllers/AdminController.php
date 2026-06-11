@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
-//use App\Models\Pedido;
+use App\Models\Venta;
 use App\Models\Producto;
 use App\Models\Contacto;
 
@@ -18,7 +18,7 @@ class AdminController extends Controller
         $productos = Producto::count();
 
         // TOTAL DE PEDIDOS
-       // $pedidos = Pedido::count();
+        $ventas = Venta::count();
 
         // TOTAL DE CONSULTAS
         $consultas = Contacto::count();
@@ -30,7 +30,7 @@ class AdminController extends Controller
         return view('dashboard', compact(
             'usuarios',
             'productos',
-            //'pedidos',
+            'ventas',
             'consultas',
             'ultimasConsultas'
         ));

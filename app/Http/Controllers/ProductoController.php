@@ -203,6 +203,15 @@ class ProductoController extends Controller
             ->route('productos.index')
             ->with('success_message', 'Producto dado de baja correctamente');
     }
+    
+
+        public function activar($id)
+    {
+        $producto = Producto::findOrFail($id);
+        $producto->update(['activo' => true]);
+        return redirect()->route('productos.index')
+        ->with('success', 'Producto activado correctamente.');
+    }
 
 
     public function productosPorCategoria($id, Request $request)

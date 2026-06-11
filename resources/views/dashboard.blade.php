@@ -1,5 +1,5 @@
 
-<x-layout-admin title="Dashboard Admin">
+<x-layout title="Dashboard Admin">
     
     <section class="bg-primary text-white text-center py-5 mb-5">
         <div class="container">
@@ -100,9 +100,12 @@
 
                         <div>
                             <h6 class="text-muted mb-1">
-                                Pedidos
+                                Ventas
                             </h6>
 
+                                <h2 class="fw-bold">
+                                {{ $ventas }}
+                                </h2>
                            
                         </div>
 
@@ -292,4 +295,4 @@
 
     </div>
 
-</x-layout-admin>
+</x-layout>

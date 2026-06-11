@@ -21,11 +21,35 @@
             <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Patrick+Hand&display=swap" rel="stylesheet">  
     </head>
 
+            @if(session('carritoAbierto'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var offcanvas = new bootstrap.Offcanvas(document.getElementById('carritoCanvas'));
+                offcanvas.show();
+            });
+        </script>
+        @endif
+
+
     <body>
-         <x-bannerSuperior/>
-        <x-navbar />
-   
-        <x-login/>
+         @auth
+            @if(Auth::user()->perfil_id == 2)
+                <x-navbar-admin />
+                <x-login/>
+            @else
+                <x-bannerSuperior />
+                <x-navbar />
+                <x-carrito />
+                <x-login/>
+            @endif
+
+            @else
+                <x-bannerSuperior />
+                <x-navbar />
+                <x-carrito />
+                <x-login/>
+        @endauth
+        <x-carrito/>
         <main >
             {{ $slot }}
         </main>

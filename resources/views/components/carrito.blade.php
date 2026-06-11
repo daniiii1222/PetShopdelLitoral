@@ -1,21 +1,4 @@
 
-{{-- Botón carrito --}}
-<button class="btn btn-outline-light position-relative"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#carritoCanvas"
-        aria-controls="carritoCanvas">
-
-    🛒
-
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
-    {{ isset($items) ? $items->sum('cantidad') : 0 }}
-
-</span>
-
-</button>
-
 {{-- Offcanvas --}}
 <div class="offcanvas offcanvas-end"
      tabindex="-1"

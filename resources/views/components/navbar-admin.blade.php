@@ -28,7 +28,7 @@
 
                 <li class="nav-item texto">
                     <a class="nav-link"
-                       href="{{ url('/registrar-producto') }}">
+                       href="{{ route('productos.create') }}">
 
                         Registrar Productos
                     </a>
@@ -36,7 +36,7 @@
 
                 <li class="nav-item texto">
                     <a class="nav-link"
-                       href="{{ url('/gestionar-producto') }}">
+                       href="{{  route('productos.index') }}">
 
                         Gestionar Productos
                     </a>

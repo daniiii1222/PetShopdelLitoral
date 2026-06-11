@@ -108,9 +108,7 @@ class CarritoController extends Controller
 
         $this->recalcularTotal($carrito);
 
-        return redirect()
-                ->route('carrito.index')
-                ->with('mensaje', 'Producto agregado al carrito');
+       return back()->with('carritoAbierto', true);
     }
 
     /**

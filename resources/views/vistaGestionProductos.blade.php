@@ -175,30 +175,34 @@
                                         {{-- MODIFICAR --}}
                                         <a href="{{ route('productos.edit', $producto->id) }}"
                                            class="btn btn-warning btn-sm">
-
                                             <i class="bi bi-pencil-square"></i>
 
                                             Modificar
 
                                         </a>
 
-                                        {{-- ELIMINAR --}}
-                                        <form action="{{ route('productos.destroy', $producto->id) }}"
-                                              method="POST">
+                                        {{-- ELIMINAR o HABILITAR según estado --}}
+                                        @if($producto->activo)
 
-                                            @csrf
-                                            @method('DELETE')
+                                            <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash"></i> Deshabilitar
+                                                </button>
+                                            </form>
 
-                                            <button type="submit"
-                                                    class="btn btn-danger btn-sm">
+                                        @else
 
-                                                <i class="bi bi-trash"></i>
+                                            <form action="{{ route('productos.activar', $producto->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-success btn-sm">
+                                                    <i class="bi bi-check-circle"></i> Habilitar
+                                                </button>
+                                            </form>
 
-                                                Eliminar
-
-                                            </button>
-
-                                        </form>
+                                        @endif
 
                                     </div>
 

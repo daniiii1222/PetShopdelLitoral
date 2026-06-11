@@ -38,14 +38,17 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('ventas', VentaController::class);
 
-Route::resource('carrito', CarritoController::class);
-
-    Route::post(
+  Route::post(
         '/carrito/confirmar',
         [CarritoController::class, 'confirmar']
     )->name('carrito.confirmar');
 
 }); 
+
+Route::resource('carrito', CarritoController::class);
+
+Route::patch('/productos/{id}/activar', [ProductoController::class, 'activar'])
+    ->name('productos.activar');
 
 Route::resource('productos', ProductoController::class);
 
