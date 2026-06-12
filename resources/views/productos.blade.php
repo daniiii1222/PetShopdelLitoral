@@ -35,6 +35,19 @@
             @endif
         @endisset
 
+        @if(session('alerta_login'))
+            <div class="alert alert-warning text-center">
+                {{ session('alerta_login') }}
+                <a href="{{ route('login') }}" class="alert-link ms-2">Iniciar sesión</a>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger text-center">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- CARRUSEL -->
         <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -50,39 +63,32 @@
                                              class="card-img-top"
                                              alt="{{ $producto->nombre_producto }}">
                                         <div class="card-body text-center">
-                                            <h6>
-                                                {{ $producto->nombre_producto }}
-                                            </h6>
+                                            <h6>{{ $producto->nombre_producto }}</h6>
 
                                             <p class="fw-bold">
                                                 ${{ $producto->precio_producto }}
                                             </p>
 
-                                            <form action="{{ route('carrito.store') }}"
-                                                method="POST">
+                                            @if($producto->stock_producto > 0)
+                                                <form action="{{ route('carrito.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                                                    <input type="hidden" name="cantidad" value="1">
 
-                                                @csrf
+                                                    <button type="button"
+                                                            class="btn btn-success w-100"
+                                                            onclick="verificarLogin(this)">
+                                                        <i class="bi bi-cart-plus"></i>
+                                                        Agregar al carrito
+                                                    </button>
+                                                </form>
 
-                                               
-                                                <input type="hidden"
-                                                    name="producto_id"
-                                                    value="{{ $producto->id }}">
-
-                                                <input type="hidden"
-                                                    name="cantidad"
-                                                    value="1">
-
-                                                
-                                                <button type="submit"
-                                                        class="btn btn-success w-100">
-
-                                                    <i class="bi bi-cart-plus"></i>
-
-                                                    Agregar al carrito
-
+                                            @else
+                                                <button class="btn btn-secondary w-100" disabled>
+                                                    <i class="bi bi-x-circle"></i>
+                                                    Sin stock
                                                 </button>
-
-                                            </form>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -107,5 +113,28 @@
 
     </div>
 </div>
+
+{{-- SCRIPT SWEETALERT --}}
+<script>
+function verificarLogin(btn) {
+    @if(Auth::check())
+        btn.closest('form').submit();
+    @else
+        Swal.fire({
+            title: '¡Iniciá sesión!',
+            text: 'Necesitás una cuenta para agregar productos al carrito.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Iniciar sesión',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#212529',
+        }).then((result) => {
+            if (result.isConfirmed) {
+               window.location.href = "{{ route('login') }}?mostrar=login";
+            }
+        });
+    @endif
+}
+</script>
 
 </x-layout>

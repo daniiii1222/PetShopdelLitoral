@@ -21,7 +21,8 @@ class ContactoRequest extends FormRequest
             'nombre' => 'required|string|regex:/^[\pL\s]+$/u|max:100',
             'email'=> 'required|email|max:150',
             'asunto'=> 'required|string|max:200',
-            'mensaje'=> 'required|string|min:10|max:1000',
+            'mensaje'=> 'required|string|min:30|max:1000',
+            
         
         ];
 

@@ -20,7 +20,7 @@
                         @csrf
                         <div class="mb-3">
                         <label class="form-label">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Tu nombre">
+                        <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" value="{{ old('nombre') }}">
                         @error ('nombre')
                             <small class = "text-danger">
                                 {{$message}}
@@ -30,7 +30,7 @@
 
                         <div class="mb-3">
                         <label class="form-label">Correo electrónico</label>
-                        <input type="email" name="email" class="form-control" placeholder="ejemplo@mail.com">
+                        <input type="email" name="email" class="form-control" placeholder="ejemplo@mail.com" value="{{ old('email') }}">
                          @error ('email')
                             <small class = "text-danger">
                                {{$message}}
@@ -40,7 +40,7 @@
 
                         <div class="mb-3">
                         <label class="form-label">Asunto</label>
-                        <input type="text" name="asunto" class="form-control">
+                        <input type="text" name="asunto" class="form-control" value="{{ old('asunto') }}">
                          @error ('asunto')
                             <small class = "text-danger">
                                 {{$message}}
@@ -50,7 +50,7 @@
 
                         <div class="mb-3">
                         <label class="form-label">Mensaje</label>
-                        <textarea class="form-control" name="mensaje" rows="5"></textarea>
+                        <textarea class="form-control" name="mensaje" rows="5"> {{ old('mensaje') }}</textarea>
                          @error ('mensaje')
                             <small class = "text-danger">
                                 {{$message}}

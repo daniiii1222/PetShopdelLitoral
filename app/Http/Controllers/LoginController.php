@@ -43,6 +43,7 @@ class LoginController extends Controller
         }
 
         return redirect()->back()
+            ->withInput()
             ->withErrors([
                 'login_error' => 'Correo o contraseña incorrectos'
             ]);

@@ -34,6 +34,9 @@
                             placeholder="ejemplo@mail.com"
                             name="email_login"
                             id="email_login"
+                            value="{{ old('email') }}"
+                            
+                            
                         >
                          @error ('email_login')
                             <small class = "text-danger">
@@ -50,6 +53,7 @@
                             placeholder="********"
                             name="contrasenia"
                             id="contrasenia_login"
+                            
                         >
                          @error ('contrasenia')
                             <small class = "text-danger">
@@ -120,7 +124,7 @@
                     
                         <div class="mb-2">
                             <label class="form-label">Nombre</label>
-                            <input type="text" name="nombreRegistro" class="form-control">
+                            <input type="text" name="nombreRegistro" class="form-control" value="{{ old('nombreRegistro') }}">
 
                             @error ('nombreRegistro')
                                 <small class = "text-danger">
@@ -131,7 +135,11 @@
                         
                         <div class="mb-2">
                             <label class="form-label">Apellido</label>
-                            <input type="text" name="apellido" class="form-control">
+                            <input type="text" 
+                                name="apellido" 
+                                class="form-control"
+                                value="{{ old('apellido') }}"
+                            >
 
                             @error ('apellido')
                                 <small class = "text-danger">
@@ -144,7 +152,7 @@
                     
                     <div class="mb-2">
                         <label class="form-label">Correo electrónico</label>
-                        <input type="email" name="correo" class="form-control">
+                        <input type="email" name="correo" class="form-control" value="{{ old('correo') }}">
                          @error ('correo')
                             <small class = "text-danger">
                                 {{$message}}
@@ -155,7 +163,7 @@
 
                     <div class="mb-2">
                         <label class="form-label">Teléfono</label>
-                        <input type="text" name="telefono" class="form-control">
+                        <input type="text" name="telefono" class="form-control" value="{{ old('telefono') }}">
                         @error ('telefono')
                             <small class = "text-danger">
                                 {{$message}}
@@ -207,6 +215,22 @@
 
         </section>
     </div>
+    </section>
+    </div>
+</div>
+
+            
+            <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const params = new URLSearchParams(window.location.search);
+                
+                if (params.get('mostrar') === 'registro') {
+                    mostrarRegistro();
+                } else if (params.get('mostrar') === 'login') {
+                    inicioSesion();
+                }
+            });
+            </script>
 </div>
 
 

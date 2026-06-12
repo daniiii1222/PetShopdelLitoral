@@ -219,13 +219,7 @@
 
                                 <td class="text-center">
 
-                                    <a href=""
-                                       class="btn btn-primary btn-sm">
-
-                                        Ver
-
-                                    </a>
-
+                                   <a href="{{ route('consultas.index') }}" class="btn btn-primary btn-sm">Ver</a>
                                 </td>
 
                             </tr>
@@ -273,12 +267,9 @@
 
                 </a>
 
-                <a href=""
-                   class="btn btn-outline-danger">
-
+                <a href="{{ route('consultas.index') }}" class="btn btn-outline-danger">
                     <i class="bi bi-envelope"></i>
                     Ver consultas
-
                 </a>
 
                 <a href="{{ url('/') }}"

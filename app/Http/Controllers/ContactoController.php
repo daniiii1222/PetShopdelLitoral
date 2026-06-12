@@ -8,6 +8,13 @@ use App\Models\Contacto;
 
 class ContactoController extends Controller
 {
+
+     public function index()
+        {
+        $consultas = Contacto::orderBy('created_at', 'desc')->get();
+        return view('admin.consultas', compact('consultas'));
+        }
+
     public function store_contact(ContactoRequest $request)
     {
         $datos = $request->validated();
@@ -27,6 +34,8 @@ class ContactoController extends Controller
 
         return redirect()->back()
             ->with('contacto_success', true)
-            ->with('nombre', $datos['nombre']);
+            ->with('nombre', $datos['nombre'])
+            ->with('email', $datos['email']);
     }
+
 }

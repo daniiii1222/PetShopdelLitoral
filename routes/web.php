@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\CarritoController;
-
+use App\Http\Controllers\PerfilController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +43,10 @@ Route::resource('ventas', VentaController::class);
         [CarritoController::class, 'confirmar']
     )->name('carrito.confirmar');
 
+    Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show');
+    Route::get('/perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
+    Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
+    Route::get('/mis-compras', [PerfilController::class, 'misCompras'])->name('perfil.misCompras');
 }); 
 
 Route::resource('carrito', CarritoController::class);
@@ -56,3 +60,5 @@ Route::get(
     '/productos/categoria/{id}',
     [ProductoController::class, 'productosPorCategoria']
 )->name('productos.productosPorCategoria');
+
+Route::get('/admin/consultas', [ContactoController::class, 'index'])->name('consultas.index');

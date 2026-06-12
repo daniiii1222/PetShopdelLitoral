@@ -50,10 +50,9 @@
                     </span>
 
                     {{-- PERFIL --}}
-                    <a href="">
+                    <a href="{{ route('perfil.show') }}">
                         <i class="bi bi-person fs-5"></i>
                     </a>
-
                     {{-- LOGOUT --}}
                     <form action="{{ route('logout') }}" method="POST">
 

@@ -72,6 +72,11 @@ class CarritoController extends Controller
     public function store(Request $request)
     {
         
+         if (!Auth::check()) {
+            return redirect()->back()
+            ->with('alerta_login', 'Debés iniciar sesión para agregar productos al carrito.');
+        }
+
         $request->validate([
             'producto_id' => 'required|exists:productos,id',
             'cantidad' => 'required|integer|min:1'
@@ -79,6 +84,10 @@ class CarritoController extends Controller
 
         $producto = Producto::findOrFail($request->producto_id);
         
+        if ($producto->stock_producto <= 0) {
+        return back()->with('error', 'Este producto no tiene stock disponible.');
+        }
+
         $carrito = $this->obtenerCarrito();
         
         $item = $carrito->detalles()
