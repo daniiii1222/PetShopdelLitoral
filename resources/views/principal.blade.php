@@ -42,7 +42,7 @@
         <div class= "col">
           <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-alimento.jpg') }}" >
-             <a href="{{ url('/alimentos') }}" class="btn btn-custom">ALIMENTOS</a>
+           <a href="{{ route('productos.productosPorCategoria', 1) }}" class="btn btn-custom">ALIMENTOS</a>
            <!-- <p class="category-count">6 items</p> -->
           </div>
         </div>
@@ -50,7 +50,7 @@
         <div class= "col">
           <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-accesorios.jpg') }}" >
-             <a href="{{ url('/accesorios') }}" class="btn btn-custom">ACCESORIOS</a>
+             <a href="{{ route('productos.productosPorCategoria', 3) }}" class="btn btn-custom">ACCESORIOS</a>
             <!-- <p class="category-count">6 items</p> -->
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class= "col">
           <div class="category-card p-3 mx-auto">
             <img src="{{ asset('Imagenes/categ-ropa.jpg') }}" >
-             <a href="{{ url('/ropa') }}" class="btn btn-custom">ROPA</a>
+             <a href="{{route('productos.productosPorCategoria', 2) }}" class="btn btn-custom">ROPA</a>
             
             <!-- <p class="category-count">6 items</p> -->
           </div> 
@@ -67,6 +67,84 @@
     </div>
 
     <!--Novedades-->
+        <section class="container my-5">
+
+        <h2 class="text-center mb-4">
+            Productos Más Vendidos
+        </h2>
+
+        <div id="carouselMasVendidos"
+            class="carousel slide"
+            data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                @foreach($productosMasVendidos->chunk(3) as $grupo)
+
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+
+                        <div class="row justify-content-center">
+
+                            @foreach($grupo as $producto)
+
+                                <div class="col-md-4">
+
+                                    <div class="text-center">
+
+                                        @if($producto->producto->imagen_producto)
+
+                                        
+                                            <img  src="{{ asset('storage/' .$producto->producto->imagen_producto) }}"
+                                                class="img-fluid rounded"
+                                                style="width:250px;height:250px;object-fit:cover;">
+
+                                        @endif
+
+                                        <h5 class="mt-3">
+                                            {{ $producto->producto->nombre_producto }}
+                                        </h5>
+
+                                        <p class="fw-bold">
+                                            $ {{ number_format($producto->producto->precio_producto,0,',','.') }}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                @endforeach
+
+            </div>
+
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselMasVendidos"
+                    data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"></span>
+
+            </button>
+
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselMasVendidos"
+                    data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"></span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!--Preguntas Frecuentes-->
 
     <section class="container my-5">
 

@@ -19,9 +19,15 @@ return new class extends Migration
         $table->string('contrasenia'); 
         $table->foreignId('perfil_id')->constrained('perfiles');
         $table->boolean('estado');
+
+        $table->string('direccion')->nullable();
+        $table->string('ciudad')->nullable();
+        $table->string('provincia')->nullable();
+        $table->string('codigo_postal')->nullable();
         $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

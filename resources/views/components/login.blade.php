@@ -1,6 +1,7 @@
 
 <div class="contenedor-login pag-contacto"
-     data-login-errors="{{ $errors->has('email_login') || $errors->has('password') }}">
+     data-login-errors="{{ ($errors->has('email_login') || $errors->has('login_error')) ? '1' : '0' }}"
+     data-register-errors="{{ ($errors->has('nombreRegistro') || $errors->has('correo') || $errors->has('apellido') || $errors->has('telefono')) ? '1' : '0' }}">
     <div class="container-login">
        
         <section class="form-login container min-vh-100 d-flex align-items-center justify-content-center">
@@ -119,7 +120,7 @@
                     <h2>Crear cuenta</h2>
                 </div>
 
-                <form action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST">
+                <form id="formRegistro" action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST">
                     @csrf
                     
                         <div class="mb-2">
@@ -232,6 +233,3 @@
             });
             </script>
 </div>
-
-
-

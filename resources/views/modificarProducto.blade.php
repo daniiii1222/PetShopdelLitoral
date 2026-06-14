@@ -15,9 +15,11 @@
 
             <div class="card-body">
 
-                <form action="{{ route('productos.update', $producto->id) }}"
+                <form id="formModificarProducto"
+                      action="{{ route('productos.update', $producto->id) }}"
                       method="POST"
-                      enctype="multipart/form-data">
+                      enctype="multipart/form-data"
+                      novalidate>
 
                     @csrf
                     @method('PUT')
@@ -114,6 +116,7 @@
                         </label>
 
                         <select name="categoria"
+                                id="categoria"
                                 class="form-select">
 
                             @foreach($categorias as $categoria)
@@ -138,13 +141,14 @@
                     </div>
 
                     {{-- TIPO ALIMENTO --}}
-                    <div class="mb-3">
+                    <div class="mb-3 d-none" id="contenedorTipoAlimento">
 
                         <label class="form-label">
                             Tipo de Alimento
                         </label>
 
                         <select name="tipoAlimento"
+                                id="tipoAlimento"
                                 class="form-select">
 
                             <option value="">
@@ -154,7 +158,7 @@
                             @foreach($tiposAlimentos as $tipo)
 
                                 <option value="{{ $tipo->id }}"
-                                    {{ old('$tiposAlimentos', $producto->tipoAlimento_id) == $tipo->id ? 'selected' : '' }}>
+                                    {{ old('tipoAlimento', $producto->tipoAlimento_id) == $tipo->id ? 'selected' : '' }}>
 
                                     {{ $tipo->nombre }}
 
@@ -242,6 +246,71 @@
                 </form>
 
             </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('formModificarProducto');
+            const categoria = document.getElementById('categoria');
+            const contenedorTipo = document.getElementById('contenedorTipoAlimento');
+
+            function mostrarTipoAlimento() {
+                if (!categoria || !contenedorTipo) return;
+
+                if (categoria.value === '1') {
+                    contenedorTipo.classList.remove('d-none');
+                } else {
+                    contenedorTipo.classList.add('d-none');
+                }
+            }
+
+            if (categoria) {
+                categoria.addEventListener('change', mostrarTipoAlimento);
+                mostrarTipoAlimento();
+            }
+
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                document.querySelectorAll('.error-js-modificar').forEach(el => el.remove());
+
+                const requiredFields = [
+                    { selector: 'input[name="nombre"]', message: 'El nombre es obligatorio' },
+                    { selector: 'textarea[name="descripcion"]', message: 'La descripción es obligatoria' },
+                    { selector: 'input[name="precio"]', message: 'El precio es obligatorio' },
+                    { selector: 'input[name="stock"]', message: 'El stock es obligatorio' },
+                    { selector: 'select[name="categoria"]', message: 'La categoría es obligatoria' }
+                ];
+
+                if (categoria && categoria.value === '1') {
+                    requiredFields.push({ selector: 'select[name="tipoAlimento"]', message: 'El tipo de alimento es obligatorio' });
+                }
+
+                let valido = true;
+
+                requiredFields.forEach(field => {
+                    const input = form.querySelector(field.selector);
+                    if (!input) return;
+
+                    const value = input.value.trim();
+                    if (value === '' || (input.tagName === 'SELECT' && value === '')) {
+                        valido = false;
+                        const small = document.createElement('small');
+                        small.classList.add('text-danger', 'error-js-modificar');
+                        small.innerText = field.message;
+                        input.parentNode.appendChild(small);
+                    }
+                });
+
+                if (!valido) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 
         </div>
 

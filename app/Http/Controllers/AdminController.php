@@ -26,13 +26,16 @@ class AdminController extends Controller
         // ULTIMAS CONSULTAS
         $ultimasConsultas = Contacto::latest()->take(5)->get();
 
+        $ultimosUsuarios = Usuario::latest()->take(5)->get();
+
         // RETORNA LA VISTA
         return view('dashboard', compact(
             'usuarios',
             'productos',
             'ventas',
             'consultas',
-            'ultimasConsultas'
+            'ultimasConsultas',
+            'ultimosUsuarios'
         ));
     }
 }

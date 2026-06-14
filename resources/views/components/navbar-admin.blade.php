@@ -24,7 +24,16 @@
         <div class="collapse navbar-collapse" id="menu">
 
             <!-- MENU -->
+          
             <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item texto">
+                    <a class="nav-link"
+                       href="{{  url('/dashboard')  }}">
+
+                        Panel Administrador
+                    </a>
+                </li>
 
                 <li class="nav-item texto">
                     <a class="nav-link"
@@ -45,7 +54,7 @@
 
                 <li class="nav-item texto">
                     <a class="nav-link"
-                       href="{{ url('/consultas') }}">
+                       href="{{ route('consultas.index') }}">
 
                         Ver Consultas
                     </a>
@@ -53,7 +62,7 @@
 
                 <li class="nav-item texto">
                     <a class="nav-link"
-                       href="{{ url('/listar-productos') }}">
+                       href="{{ route('productos.listado') }}">
 
                         Listar Productos
                     </a>

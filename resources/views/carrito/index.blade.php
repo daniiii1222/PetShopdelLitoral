@@ -34,11 +34,14 @@
                 <h5 class="text-success">${{ number_format($carrito->total ?? 0, 2, ',', '.') }}</h5>
             </div>
 
-            <form action="{{ route('carrito.confirmar') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-success w-100">Finalizar Compra</button>
-            </form>
+            <a href="{{ route('carrito.finalizarCompra') }}"
+                class="btn btn-success w-100">
+                    Finalizar Compra
+            </a>
 
+            <p class="mt-2 text-danger">
+    {{ route('carrito.finalizarCompra') }}
+</p>
         @else
             <p class="text-muted">Tu carrito está vacío.</p>
         @endif

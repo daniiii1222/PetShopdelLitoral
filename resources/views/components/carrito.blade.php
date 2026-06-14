@@ -89,12 +89,10 @@
 
                 <div class="d-grid">
 
-                    <button type="submit"
-                            class="btn btn-success">
-
-                        Finalizar Compra
-
-                    </button>
+                    <a href="{{ route('carrito.finalizarCompra') }}"
+                class="btn btn-success w-100">
+                    Finalizar Compra
+            </a>
 
                 </div>
 

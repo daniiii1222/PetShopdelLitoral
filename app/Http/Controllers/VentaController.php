@@ -70,14 +70,12 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-    
-        $venta = Venta::with([
-                    'usuario',
-                    'detalles.producto'
-                 ]);
+        $venta->load([
+            'usuario',
+            'detalles.producto'
+        ]);
 
-        // retorna la vista detalle
-        return view('ventas.show', compact('venta'));
+        return view('vistaDetalleDeVenta', compact('venta'));
     }
 
     /**

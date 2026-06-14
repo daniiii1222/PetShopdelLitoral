@@ -33,4 +33,6 @@ class Producto extends Model
     {
         return $this->belongsTo(TipoAlimento::class);
     }
+
+
 }

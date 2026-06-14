@@ -1,6 +1,20 @@
 <x-layout :title="isset($categoria) ? $categoria->nombre_categoria : 'Productos'">
 
 <div class="paginaProductos">
+     <!-- BUSCADOR -->
+        <form action="{{ route('productos.buscar') }}" method="GET" class="d-flex justify-content-center align-items-center m-3">
+             <input
+                class="form-control w-25"
+                type="search"
+                name="buscar"
+                placeholder="Buscar productos..."
+                value="{{ request('buscar') }}">
+
+            <button class="btn btn-primary ms-1" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+
     <div class="container mt-4 mb-4">
 
         <h2 class="text-center mb-4">

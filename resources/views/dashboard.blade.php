@@ -246,6 +246,109 @@
 
         </div>
 
+                {{-- TABLA USUARIOS --}}
+        <div class="card shadow border-0 mb-5">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4 class="mb-0">
+                    Usuarios Registrados
+                </h4>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Nombre</th>
+
+                            <th>Apellido</th>
+
+                            <th>Correo</th>
+
+                            <th>Teléfono</th>
+
+                            <th>Estado</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @forelse($ultimosUsuarios as $usuario)
+
+                            <tr>
+
+                                <td>
+                                    {{ $usuario->id }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->nombreRegistro }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->apellido }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->correo }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->telefono }}
+                                </td>
+
+                                <td>
+
+                                    @if($usuario->estado)
+
+                                        <span class="badge bg-success">
+                                            Activo
+                                        </span>
+
+                                    @else
+
+                                        <span class="badge bg-danger">
+                                            Inactivo
+                                        </span>
+
+                                    @endif
+
+                                </td>
+
+                            </tr>
+
+                        @empty
+
+                            <tr>
+
+                                <td colspan="6" class="text-center py-4">
+
+                                    No hay usuarios registrados
+
+                                </td>
+
+                            </tr>
+
+                        @endforelse
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
         {{-- ACCESOS RAPIDOS --}}
         <div class="card shadow border-0">
 
@@ -272,7 +375,7 @@
                     Ver consultas
                 </a>
 
-                <a href="{{ url('/') }}"
+                <a href="{{ url('/dashboard') }}"
                    class="btn btn-outline-secondary">
 
                     <i class="bi bi-house"></i>

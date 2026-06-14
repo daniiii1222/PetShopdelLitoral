@@ -1,4 +1,4 @@
-<x-layout-admin title="Ventas">
+<x-layout title="Ventas">
 
     {{-- HERO --}}
     <section class="bg-dark text-white py-5 mb-5">
@@ -167,24 +167,6 @@
 
                                         </a>
 
-                                        
-                                        <form action="{{ route('ventas.destroy', $venta->id) }}"
-                                              method="POST">
-
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit"
-                                                    class="btn btn-danger btn-sm">
-
-                                                <i class="bi bi-trash"></i>
-
-                                                Eliminar
-
-                                            </button>
-
-                                        </form>
-
                                     </div>
 
                                 </td>
@@ -215,4 +197,4 @@
 
     </div>
 
-</x-layout-admin>
+</x-layout>

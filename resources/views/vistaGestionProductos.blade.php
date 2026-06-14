@@ -1,4 +1,4 @@
-<x-layout-admin title="Gestión de Productos">
+<x-layout title="Gestión de Productos">
 
     {{-- HERO --}}
     <section class="bg-dark text-white py-5 mb-5">
@@ -234,4 +234,4 @@
 
     </div>
 
-</x-layout-admin>
+</x-layout>

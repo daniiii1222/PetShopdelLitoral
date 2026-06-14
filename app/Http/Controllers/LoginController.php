@@ -19,12 +19,9 @@ class LoginController extends Controller
 
     public function procesarLogin(LoginRequest $request)
     {
-
-         
         $datos = $request->validated();
 
         $usuario = Usuario::where('correo', $datos['email_login'])->first();
-
 
         if ($usuario && Hash::check($datos['contrasenia'], $usuario->contrasenia)) {
 
@@ -32,16 +29,33 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
 
-            // ADMIN
-            if ($usuario->perfil_id == 2) {
+            // Definimos la ruta de destino según el perfil
+            $rutaDestino = ($usuario->perfil_id == 2) ? route('dashboard') : route('principal');
 
-                return redirect()->route('dashboard');
+            // Si la petición viene por AJAX (fetch), devolvemos JSON con la ruta
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'redirect' => $rutaDestino
+                ]);
             }
 
-            // CLIENTE
-            return redirect()->route('principal');
+            // Comportamiento tradicional por si el JS falla
+            return redirect($rutaDestino);
         }
 
+        // --- SI FALLA EL LOGIN ---
+        
+        // Si es petición AJAX, devolvemos un error 422 con el mensaje
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'errors' => [
+                    'login_error' => ['Correo o contraseña incorrectos']
+                ]
+            ], 422);
+        }
+
+        // Comportamiento tradicional
         return redirect()->back()
             ->withInput()
             ->withErrors([
@@ -53,6 +67,14 @@ class LoginController extends Controller
     {
         $datos = $request->validated();
 
+        if (Usuario::where('correo', $datos['correo'])->exists()) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'errors' => ['correo' => ['Este correo ya está registrado']]
+                ], 422);
+            }
+        }
+
         Usuario::create([
             'nombreRegistro' => $datos['nombreRegistro'],
             'apellido' => $datos['apellido'],
@@ -62,6 +84,15 @@ class LoginController extends Controller
             'perfil_id' => 2,
             'estado' => 1
         ]);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            session()->flash('registro_success', '¡Cuenta creada con éxito!');
+            return response()->json([
+                'success' => true,
+                'message' => '¡Cuenta creada con éxito!',
+                'redirect' => route('principal')
+            ]);
+        }
 
         return redirect()->back()
             ->with('registro_success', '¡Cuenta creada con éxito!')

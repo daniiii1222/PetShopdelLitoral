@@ -240,5 +240,52 @@ class ProductoController extends Controller
             'tiposAlimentos'
         ));
     }
+
+    public function buscar(Request $request)
+    {
+        $texto = $request->buscar;
+
+        $productos = Producto::where('activo', true)
+            ->where('nombre_producto', 'LIKE', "%{$texto}%")
+            ->with('categoria')
+            ->get();
+
+        $categorias = Categoria::all();
+        $tiposAlimentos = TipoAlimento::where('activo', true)->get();
+
+        return view('productos', compact(
+            'productos',
+            'categorias',
+            'tiposAlimentos'
+        ));
+    }
+
+    public function listado()
+    {
+        $productosActivos = Producto::with('categoria')
+            ->where('activo', true)
+            ->get();
+
+        $productosInactivos = Producto::with('categoria')
+            ->where('activo', false)
+            ->get();
+
+        $totalProductos = Producto::count();
+
+        $totalActivos = Producto::where('activo', true)->count();
+
+        $totalInactivos = Producto::where('activo', false)->count();
+
+        $sinStock = Producto::where('stock_producto', 0)->count();
+
+       return view('admin.vistaListadoProductos', compact(
+            'productosActivos',
+            'productosInactivos',
+            'totalProductos',
+            'totalActivos',
+            'totalInactivos',
+            'sinStock'
+        ));
+    }
     
 }

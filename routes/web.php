@@ -49,16 +49,28 @@ Route::resource('ventas', VentaController::class);
     Route::get('/mis-compras', [PerfilController::class, 'misCompras'])->name('perfil.misCompras');
 }); 
 
-Route::resource('carrito', CarritoController::class);
+Route::get('/carrito/finalizarCompra', [CarritoController::class, 'checkout'])
+    ->name('carrito.finalizarCompra');
 
 Route::patch('/productos/{id}/activar', [ProductoController::class, 'activar'])
     ->name('productos.activar');
-
-Route::resource('productos', ProductoController::class);
 
 Route::get(
     '/productos/categoria/{id}',
     [ProductoController::class, 'productosPorCategoria']
 )->name('productos.productosPorCategoria');
 
+Route::get('/productos/buscar', [ProductoController::class, 'buscar'])
+    ->name('productos.buscar');
+
+Route::resource('productos', ProductoController::class);
+
+Route::resource('carrito', CarritoController::class);
+
+Route::get(
+    '/admin/productos/listado',
+    [ProductoController::class, 'listado']
+)->name('productos.listado');
+
 Route::get('/admin/consultas', [ContactoController::class, 'index'])->name('consultas.index');
+

@@ -6,7 +6,11 @@ use App\Models\Venta;
 use App\Models\Producto;
 use App\Models\VentaDetalle;
 use Illuminate\Http\Request;
+use App\Http\Requests\FinalizarCompraRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
+
+
 
 class CarritoController extends Controller
 {
@@ -93,18 +97,19 @@ class CarritoController extends Controller
         $item = $carrito->detalles()
                         ->where('producto_id', $producto->id)
                         ->first();
-   
+
+        $cantidadActual = $item ? $item->cantidad : 0;
+        $cantidadDeseada = $cantidadActual + $request->cantidad;
+
+        if ($cantidadDeseada > $producto->stock_producto) {
+            return back()->with('error', "No hay suficiente stock disponible. Quedan {$producto->stock_producto} unidades en total.");
+        }
+
         if ($item) {
-
-            $item->cantidad += $request->cantidad;
-
-            $item->subtotal =
-                $item->cantidad * $item->precio_unitario;
-
+            $item->cantidad = $cantidadDeseada;
+            $item->subtotal = $item->cantidad * $item->precio_unitario;
             $item->save();
-
         } else {
-
             VentaDetalle::create([
                 'venta_id' => $carrito->id,
                 'producto_id' => $producto->id,
@@ -112,7 +117,6 @@ class CarritoController extends Controller
                 'precio_unitario' => $producto->precio_producto,
                 'subtotal' => $producto->precio_producto * $request->cantidad
             ]);
-            
         }
 
         $this->recalcularTotal($carrito);
@@ -168,9 +172,22 @@ class CarritoController extends Controller
     /**
      * Confirmar compra
      */
-    public function confirmar()
+    public function confirmar(FinalizarCompraRequest $request)
     {
+
         $carrito = $this->obtenerCarrito();
+
+           $usuario = Usuario::find(Auth::id());
+
+
+            $usuario->direccion = $request->direccion;
+            $usuario->ciudad = $request->ciudad;
+            $usuario->provincia = $request->provincia;
+            $usuario->codigo_postal = $request->codigo_postal;
+
+            $usuario->save();
+
+    
 
         if ($carrito->detalles()->count() == 0) {
 
@@ -200,5 +217,10 @@ class CarritoController extends Controller
                     'mensaje',
                     'Compra realizada correctamente'
                 );
+    }
+
+    public function checkout()
+    {
+        return view('carrito.finalizarCompra');
     }
 }

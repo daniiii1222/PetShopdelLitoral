@@ -24,5 +24,10 @@ class Usuario extends Authenticatable
         'contrasenia',
         'perfil_id',
         'estado',
+
+        'direccion',
+        'ciudad',
+        'provincia',
+        'codigo_postal'
     ];
 }
