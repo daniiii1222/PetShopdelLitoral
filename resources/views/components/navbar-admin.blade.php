@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm mi-navbar">
 
-    <div class="container">
+    <div class="container-fluid px-5">
 
         <!-- LOGO -->
         <a href="{{ route('dashboard') }}">
             <img src="{{ asset('Imagenes/LogoPetShop.jpg') }}"
                  alt="Logo PetShop"
-                 width="200"
-                 height="100">
+                 class="logo">
         </a>
 
         <!-- BOTON MOBILE -->
@@ -27,58 +26,72 @@
           
             <ul class="navbar-nav mx-auto">
 
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{  url('/dashboard')  }}">
+          
 
-                        Panel Administrador
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/dashboard') }}">
+                        Panel
                     </a>
                 </li>
 
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{ route('productos.create') }}">
+                <li class="nav-item dropdown">
 
-                        Registrar Productos
+                    <a class="nav-link dropdown-toggle"
+                    href="#"
+                    data-bs-toggle="dropdown">
+
+                        Productos
+
                     </a>
-                </li>
 
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{  route('productos.index') }}">
+                    <ul class="dropdown-menu">
 
-                        Gestionar Productos
-                    </a>
-                </li>
+                        <li>
+                            <a class="dropdown-item"
+                            href="{{ route('productos.create') }}">
+                                Registrar
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item"
+                            href="{{ route('productos.index') }}">
+                                Gestionar
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item"
+                            href="{{ route('productos.listado') }}">
+                                Listar
+                            </a>
+                        </li>
+
+        </ul>
+
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           href="{{ route('consultas.index') }}">
+            Consultas
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           href="{{ url('/ventas') }}">
+            Ventas
+        </a>
+    </li>
 
 
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{ route('consultas.index') }}">
-
-                        Ver Consultas
-                    </a>
-                </li>
-
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{ route('productos.listado') }}">
-
-                        Listar Productos
-                    </a>
-                </li>
-
-                <li class="nav-item texto">
-                    <a class="nav-link"
-                       href="{{ url('/ventas') }}">
-
-                        Listar Ventas
-                    </a>
-                </li>
 
             </ul>
 
             @auth
+                <div class="usuario-admin">
 
                     <span class="fw-bold">
                         {{ Auth::user()->nombreRegistro }}
@@ -101,7 +114,7 @@
                         </button>
 
                     </form>
-
+                </div>
                 @else
 
                     {{-- INVITADO --}}

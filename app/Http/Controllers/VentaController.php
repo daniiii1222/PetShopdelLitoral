@@ -101,4 +101,5 @@ class VentaController extends Controller
     {
         //
     }
+
 }

@@ -14,6 +14,8 @@
             <link rel="stylesheet" href="{{ asset('css/estilosContacto.css') }}"> 
             <link rel="stylesheet" href="{{ asset('css/estilosProductos.css') }}"> 
             <link rel="stylesheet" href="{{ asset('css/login.css') }}"> 
+            <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+            
         <!--FUENTE-->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

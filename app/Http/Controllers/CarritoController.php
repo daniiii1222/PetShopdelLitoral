@@ -212,7 +212,7 @@ class CarritoController extends Controller
         ]);
 
         return redirect()
-                ->route('ventas.index')
+                ->route('carrito.finalizarCompra')
                 ->with(
                     'mensaje',
                     'Compra realizada correctamente'

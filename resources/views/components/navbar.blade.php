@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg bg-white shadow-sm mi-navbar">
     <div class="container">
         <img src ="{{ asset('Imagenes/LogoPetShop.jpg') }}" alt="Foto de un paisaje" width="200" height="100">   
@@ -22,9 +23,9 @@
               <a class="nav-link dropdown-toggle" href="{{ url('/productos') }}" data-bs-toggle="dropdown">Productos</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{ url('/productos') }}">Todos</a></li>
-                <li><a class="dropdown-item" href="{{ url('/alimentos') }}">Alimento</a></li>
-                <li><a class="dropdown-item" href="{{ url('/accesorios') }}">Accesorios</a></li>
-                <li><a class="dropdown-item" href="{{ url('/ropa') }}">Ropa</a></li>
+                <li><a class="dropdown-item" href="{{ route('productos.productosPorCategoria', 1) }}">Alimento</a></li>
+                <li><a class="dropdown-item" href="{{ route('productos.productosPorCategoria', 2) }}">Ropa</a></li>
+                <li><a class="dropdown-item" href="{{ route('productos.productosPorCategoria', 3) }}">Accesorios</a></li>
               </ul>
             </li>
             <li class="nav-item" class = "texto" ><a class="nav-link" href="{{ url('/comercializacion') }}">Comercialización</a></li>
@@ -35,30 +36,24 @@
          
 
                       <!-- ICONOS -->
-            <div class="d-flex gap-3 align-items-center">
-
                 @auth
 
-                    <span class="fw-bold">
-                        {{ Auth::user()->nombreRegistro }}
-                    </span>
+                   <div class="usuario-navbar d-flex align-items-center gap-2">
+                        <span class="fw-bold">
+                            {{ Auth::user()->nombreRegistro }}
+                        </span>
 
-                    {{-- PERFIL --}}
-                    <a href="{{ route('perfil.show') }}">
-                        <i class="bi bi-person fs-5"></i>
-                    </a>
-                    {{-- LOGOUT --}}
-                    <form action="{{ route('logout') }}" method="POST">
+                        <a href="{{ route('perfil.show') }}">
+                            <i class="bi bi-person fs-5"></i>
+                        </a>
 
-                        @csrf
-
-                        <button class="btn btn-outline-danger btn-sm">
-
-                            <i class="bi bi-box-arrow-right"></i>
-
-                        </button>
-
-                    </form>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-box-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
 
                 @else
 

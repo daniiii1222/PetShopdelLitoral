@@ -1,4 +1,5 @@
-<x-layout title="Listado de Productos">
+<x-layout-admin title="Listado de Productos">
+   <div class="admin-page">
 
     
     <section class="bg-dark text-white py-5 mb-5">
@@ -272,4 +273,4 @@
 
     </div>
 
-</x-layout>
+</x-layout-admin>

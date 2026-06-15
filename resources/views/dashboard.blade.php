@@ -1,5 +1,5 @@
 
-<x-layout title="Dashboard Admin">
+<x-layout-admin title="Dashboard Admin">
     
     <section class="bg-primary text-white text-center py-5 mb-5">
         <div class="container">
@@ -20,14 +20,9 @@
         {{-- TITULO --}}
         <div class="d-flex justify-content-between align-items-center mb-4">
 
-            <h2 class="fw-bold">
+            <h2 class="fw-bold" style="color:#211815;">
                 Dashboard Administrador
             </h2>
-
-            <span class="badge bg-danger fs-6 px-3 py-2">
-                Admin
-            </span>
-
         </div>
 
         {{-- CARDS --}}
@@ -41,7 +36,7 @@
                     <div class="card-body d-flex align-items-center gap-3">
 
                         <div class="fs-1 text-primary">
-                            <i class="bi bi-people-fill"></i>
+                            <i class="bi bi-people-fill  icono-admin"></i>
                         </div>
 
                         <div>
@@ -68,7 +63,7 @@
                     <div class="card-body d-flex align-items-center gap-3">
 
                         <div class="fs-1 text-success">
-                            <i class="bi bi-phone-fill"></i>
+                            <i class="bi bi-phone-fill  icono-admin"></i>
                         </div>
 
                         <div>
@@ -95,7 +90,7 @@
                     <div class="card-body d-flex align-items-center gap-3">
 
                         <div class="fs-1 text-warning">
-                            <i class="bi bi-cart-fill"></i>
+                            <i class="bi bi-cart-fill icono-admin"></i>
                         </div>
 
                         <div>
@@ -123,7 +118,7 @@
                     <div class="card-body d-flex align-items-center gap-3">
 
                         <div class="fs-1 text-danger">
-                            <i class="bi bi-envelope-fill"></i>
+                            <i class="bi bi-envelope-fill  icono-admin"></i>
                         </div>
 
                         <div>
@@ -219,7 +214,7 @@
 
                                 <td class="text-center">
 
-                                   <a href="{{ route('consultas.index') }}" class="btn btn-primary btn-sm">Ver</a>
+                                   <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-primary btn-sm">Ver</a>
                                 </td>
 
                             </tr>
@@ -365,7 +360,7 @@
                 <a href="{{ route('productos.index') }}"
                    class="btn btn-outline-primary">
 
-                    <i class="bi bi-phone"></i>
+                    <i class="bi bi-phone "></i>
                     Gestionar productos
 
                 </a>
@@ -389,4 +384,4 @@
 
     </div>
 
-</x-layout>
+</x-layout-admin>

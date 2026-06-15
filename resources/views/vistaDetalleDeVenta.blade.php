@@ -1,4 +1,4 @@
-<x-layout title="Detalle de Venta">
+<x-layout-admin title="Detalle de Venta">
 
     <div class="container py-5">
 
@@ -111,4 +111,4 @@
 
     </div>
 
-</x-layout>
+</x-layout-admin>

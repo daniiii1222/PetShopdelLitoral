@@ -74,3 +74,5 @@ Route::get(
 
 Route::get('/admin/consultas', [ContactoController::class, 'index'])->name('consultas.index');
 
+Route::get('/admin/consultas/{id}', [ContactoController::class, 'show'])->name('consultas.show');
+

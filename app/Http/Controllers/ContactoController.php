@@ -15,6 +15,12 @@ class ContactoController extends Controller
         return view('admin.consultas', compact('consultas'));
         }
 
+    public function show($id)
+    {
+        $consulta = Contacto::findOrFail($id);
+        return view('admin.consultaDetalle', compact('consulta'));
+    }
+
     public function store_contact(ContactoRequest $request)
     {
         $datos = $request->validated();
@@ -38,4 +44,5 @@ class ContactoController extends Controller
             ->with('email', $datos['email']);
     }
 
+ 
 }

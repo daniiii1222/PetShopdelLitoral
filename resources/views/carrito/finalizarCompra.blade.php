@@ -89,5 +89,46 @@
         </form>
 
     </div>
-
+     
 </x-layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form[action="{{ route('carrito.confirmar') }}"]');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Confirmar compra',
+                text: '¿Deseas confirmar la compra? Se realizará el pago y finalizará la orden.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, confirmar',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#198754'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
+
+@if(session('mensaje'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Compra realizada!',
+                text: "{{ session('mensaje') }}",
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#198754',
+                timer: 4000,
+                timerProgressBar: true,
+            });
+        });
+    </script>
+@endif

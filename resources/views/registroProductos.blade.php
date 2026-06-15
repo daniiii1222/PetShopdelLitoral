@@ -1,5 +1,18 @@
 <x-layout-admin>
 
+  <section class="bg-dark text-white py-4 mb-5">
+    <div class="container text-center">
+
+         <h1 class="fw-bold display-5">
+             Registrar Producto
+        </h1>
+
+        <p class="lead">
+        Registro de nuevos productos para la tienda
+        </p>
+
+        </div>
+    </section>
 <div class="container mt-5">
 
     <div class="row justify-content-center">
@@ -8,7 +21,7 @@
 
             <div class="card shadow">
 
-                <div class="card-header bg-dark text-white">
+                <div class="card-header">
                     <h3 class="mb-0">Agregar Producto</h3>
                 </div>
 
@@ -186,17 +199,13 @@
                         <div class="d-flex justify-content-between">
 
                             <a href="{{ route('productos.index') }}"
-                               class="btn btn-secondary">
-
-                                Volver
-
+                                class="btn btn-outline-secondary">
+                                    Volver
                             </a>
 
-                            <button type="submit"
-                                    class="btn btn-success">
-
+                           <button type="submit"
+                            class="btn btn-primary">
                                 Guardar Producto
-
                             </button>
 
                         </div>

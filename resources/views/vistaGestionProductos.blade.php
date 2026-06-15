@@ -1,4 +1,4 @@
-<x-layout title="Gestión de Productos">
+<x-layout-admin title="Gestión de Productos">
 
     {{-- HERO --}}
     <section class="bg-dark text-white py-5 mb-5">
@@ -48,13 +48,14 @@
         {{-- TABLA --}}
         <div class="card shadow border-0">
 
-            <div class="card-header bg-primary text-white">
+           
 
-                <h4 class="mb-0">
-                    Lista de Productos
-                </h4>
-
-            </div>
+                <div class="card-header bg-primary text-white py-2">
+                    <h4 class="mb-0 fw-normal">
+                        Lista de Productos
+                    </h4>
+                </div>
+            
 
             <div class="table-responsive">
 
@@ -234,4 +235,4 @@
 
     </div>
 
-</x-layout>
+</x-layout-admin>

@@ -1,4 +1,4 @@
-<x-layout title="Ventas">
+<x-layout-admin title="Ventas">
 
     {{-- HERO --}}
     <section class="bg-dark text-white py-5 mb-5">
@@ -24,28 +24,7 @@
                 Ventas Registradas
             </h2>
 
-            {{-- BOTON NUEVA VENTA --}}
-            <a href="{{ route('ventas.create') }}"
-               class="btn btn-success">
-
-                <i class="bi bi-plus-circle"></i>
-                Nueva Venta
-
-            </a>
-
         </div>
-
-       
-        @if(session('mensaje'))
-
-            <div class="alert alert-success">
-
-                {{ session('mensaje') }}
-
-            </div>
-
-        @endif
-
        
         <div class="card shadow border-0">
 
@@ -197,4 +176,4 @@
 
     </div>
 
-</x-layout>
+</x-layout-admin>

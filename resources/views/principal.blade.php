@@ -1,6 +1,3 @@
-
-
-
 <x-layout title="Home">
 <div class="pagina-contacto">
   
@@ -235,4 +232,21 @@
 
 </section>
 </div>
+
+    @if(session('mensaje'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Compra realizada!',
+                    text: "{{ session('mensaje') }}",
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#198754',
+                    timer: 4000,
+                    timerProgressBar: true,
+                });
+            });
+        </script>
+    @endif
+
 </x-layout>

@@ -39,9 +39,6 @@
                     Finalizar Compra
             </a>
 
-            <p class="mt-2 text-danger">
-    {{ route('carrito.finalizarCompra') }}
-</p>
         @else
             <p class="text-muted">Tu carrito está vacío.</p>
         @endif

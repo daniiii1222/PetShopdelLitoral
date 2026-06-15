@@ -56,5 +56,6 @@
         Volver al perfil
     </a>
 
+    
 </div>
 </x-layout>
