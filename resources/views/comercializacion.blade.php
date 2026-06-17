@@ -28,7 +28,7 @@
                     <p class="text-muted">
                         Encontrá todo para tu mascota con envíos rápidos y múltiples medios de pago.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver productos</a>
+                    <a  href="{{ url('/productos') }}" class="btn btn-primary">Ver productos</a>
                 </div>
 
             </div>

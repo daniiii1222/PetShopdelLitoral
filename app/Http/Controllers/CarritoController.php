@@ -10,8 +10,6 @@ use App\Http\Requests\FinalizarCompraRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 
-
-
 class CarritoController extends Controller
 {
     /**
@@ -46,9 +44,8 @@ class CarritoController extends Controller
             'guardado' => $carrito->fresh()->total
         ];
     }
-    /**
-     * Display a listing of the resource.
-     */
+
+    
     public function index()
     {
         $carrito = $this->obtenerCarrito();
@@ -60,9 +57,7 @@ class CarritoController extends Controller
         return view('carrito.index', compact('carrito', 'items'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         $productos = Producto::all();
@@ -70,9 +65,7 @@ class CarritoController extends Controller
         return view('carrito.create', compact('productos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         
@@ -124,9 +117,7 @@ class CarritoController extends Controller
        return back()->with('carritoAbierto', true);
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         $item = VentaDetalle::with('producto')
@@ -135,25 +126,19 @@ class CarritoController extends Controller
         return view('carrito.show', compact('item'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
         $carrito = $this->obtenerCarrito();

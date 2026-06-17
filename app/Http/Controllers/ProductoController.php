@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
-   
- 
 
     public function index()
     {

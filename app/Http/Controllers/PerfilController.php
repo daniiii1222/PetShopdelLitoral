@@ -12,7 +12,6 @@ use App\Models\Venta;
 class PerfilController extends Controller
 {
 
-
     public function show()
     {
         $usuario = Auth::user();
