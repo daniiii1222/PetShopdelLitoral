@@ -147,6 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 valido = false; mostrarError(correoInput, "Ingresá un email válido");
             }
             if (telefono === "") { valido = false; mostrarError(telefonoInput, "El teléfono es obligatorio"); }
+            if (telefono !== "" && telefono.length > 10) {
+                valido = false;
+                mostrarError(telefonoInput, "El teléfono no puede exceder los 10 caracteres");
+            }
             if (password === "") { valido = false; mostrarError(passwordInput, "La contraseña es obligatoria"); }
             if (confirm === "") {
                 valido = false; mostrarError(confirmInput, "Debes confirmar la contraseña");
@@ -176,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (data.redirect) {
                         window.location.href = data.redirect;
                     } else {
-                        window.location.reload();
+                        window.location.href = '/';
                     }
                 } else if (response.status === 422) {
                     if (data.errors) {

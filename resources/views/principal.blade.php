@@ -249,4 +249,17 @@
         </script>
     @endif
 
+    @if(session('registro_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Cuenta creada con éxito!',
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#212529',
+                });
+            });
+        </script>
+    @endif
+
 </x-layout>

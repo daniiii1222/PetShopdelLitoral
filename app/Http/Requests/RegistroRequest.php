@@ -34,8 +34,10 @@ class RegistroRequest extends FormRequest
         'correo.required'         => 'El email es obligatorio',
         'correo.unique'           => 'Este correo ya está registrado',
         'correo.email'            => 'El email no es válido',
+        'telefono.max' => 'El teléfono no puede exceder los 10 caracteres',
         'telefono.required'       => 'El teléfono es obligatorio',
-        'contrasenia.required'     => 'La contraseña es obligatoria', //cintrasenia
+
+        'contrasenia.required'     => 'La contraseña es obligatoria',
         'contrasenia.min'          => 'La contraseña debe tener al menos 6 caracteres', 
         'password_confirmation.required' => 'Debes confirmar la contraseña',
         'password_confirmation.same'     => 'Las contraseñas no coinciden',

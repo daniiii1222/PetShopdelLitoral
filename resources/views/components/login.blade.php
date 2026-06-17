@@ -1,7 +1,7 @@
 
 <div class="contenedor-login pag-contacto"
      data-login-errors="{{ ($errors->has('email_login') || $errors->has('login_error')) ? '1' : '0' }}"
-     data-register-errors="{{ ($errors->has('nombreRegistro') || $errors->has('correo') || $errors->has('apellido') || $errors->has('telefono')) ? '1' : '0' }}">
+    data-register-errors="{{ ($errors->has('nombreRegistro') || $errors->has('correo') || $errors->has('apellido') || $errors->has('telefono')) ? '1' : '0' }}">
     <div class="container-login">
        
         <section class="form-login container min-vh-100 d-flex align-items-center justify-content-center">
@@ -119,8 +119,7 @@
                 <div class="text-center mb-3">
                     <h2>Crear cuenta</h2>
                 </div>
-
-                <form id="formRegistro" action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST">
+                <form id="formRegistro" action="{{ route('procesarRegistro.procesarRegistro') }}" method="POST" novalidate>
                     @csrf
                     
                         <div class="mb-2">
@@ -207,16 +206,10 @@
                     </button>
 
                 </form>
-                 @if(session('registro_success'))
-                    <div class="alert alert-success">
-                     {{ session('registro_success') }}
-                    </div>
-                    @endif
+
             </div>
 
         </section>
-    </div>
-    </section>
     </div>
 </div>
 
@@ -232,4 +225,3 @@
                 }
             });
             </script>
-</div>

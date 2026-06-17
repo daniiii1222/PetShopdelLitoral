@@ -94,9 +94,9 @@ class LoginController extends Controller
             ]);
         }
 
-        return redirect()->back()
-            ->with('registro_success', '¡Cuenta creada con éxito!')
-            ->with('nombreRegistro', $datos['nombreRegistro']);
+        return redirect()
+            ->route('principal')
+            ->with('registro_success', '¡Cuenta creada con éxito!');
     }
 
     public function logout(Request $request)

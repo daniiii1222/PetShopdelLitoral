@@ -128,7 +128,6 @@
     </div>
 </div>
 
-{{-- SCRIPT SWEETALERT --}}
 <script>
 function verificarLogin(btn) {
     @if(Auth::check())

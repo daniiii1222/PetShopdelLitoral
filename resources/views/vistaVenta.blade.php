@@ -81,7 +81,7 @@
                                 <td>
 
                                     {{-- nombre del usuario relacionado --}}
-                                    {{ $venta->usuario->name }}
+                                    {{ $venta->usuario->nombreRegistro }} {{ $venta->usuario->apellido }}
 
                                 </td>
 

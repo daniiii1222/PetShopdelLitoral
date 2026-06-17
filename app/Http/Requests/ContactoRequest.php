@@ -37,6 +37,8 @@ class ContactoRequest extends FormRequest
             'email.required'=> 'El email es obligatorio',
             'asunto.required'=> 'El asunto es obligatorio',
             'mensaje.required'=> 'La consulta es obligatoria',
+            'mensaje.min' => 'La consulta debe contener al menos 30 caracteres',
+            'mensaje.max' => 'La consulta no puede exceder los 1000 caracteres',
             
         ];
         

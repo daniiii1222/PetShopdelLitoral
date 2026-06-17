@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Usuario;
 use App\Models\Venta;
 
 class PerfilController extends Controller
 {
+
+
     public function show()
     {
         $usuario = Auth::user();
@@ -24,6 +27,7 @@ class PerfilController extends Controller
 
     public function update(Request $request)
     {
+     
         $usuario = Auth::user();
 
         $validator = Validator::make($request->all(), [
